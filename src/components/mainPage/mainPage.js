@@ -7,6 +7,12 @@ const mainPage = () => {
       <video autoPlay muted loop className="mainPage__video">
         <source src={beeMovie} type="video/mp4" />
       </video>
+      <div className="mainPage__content">
+        <p className="mainPage__title">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+        <button className="mainPage__btn">Перейти</button>
+      </div>
     </div>
   );
 };
