@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../styles/header.scss";
-import shoppingCart from "../assets/images/shopping-cart.png";
-import logo from "../assets/images/logo-mockup.png";
+import "../../styles/header.scss";
+import shoppingCart from "../../assets/images/shopping-cart.png";
+import logo from "../../assets/images/logo-mockup.png";
 
 const header = () => {
   const navigationItems = [
@@ -29,7 +29,7 @@ const header = () => {
       <img src={logo} alt="logo" className="logo" />
       <ul className="nav-list-right">
         {navigationItems.map((item, index) => (
-          <NavLink to={item.path} className="nav-link" key={index}>
+          <NavLink to={item.path} exact className="nav-link" activeClassName="active" key={index}>
             {item.text}
           </NavLink>
         ))}
