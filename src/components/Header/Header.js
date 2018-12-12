@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../../styles/header.scss";
 import shoppingCart from "../../assets/images/shopping-cart.png";
-import logo from "../../assets/images/logo-mockup.png";
+import logo from "../../assets/images/logo.png";
 
 const header = () => {
   const navigationItems = [
@@ -26,7 +26,10 @@ const header = () => {
 
   return (
     <nav className="navigation">
-      <img src={logo} alt="logo" className="logo" />
+      <div className="logo-img">
+        <img src={logo} alt="logo" className="logo" />
+      </div>
+      
       <ul className="nav-list-right">
         {navigationItems.map((item, index) => (
           <NavLink to={item.path} exact className="nav-link" activeClassName="active" key={index}>

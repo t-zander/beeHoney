@@ -21,6 +21,7 @@
     color: #fff;
     font-size: 22px;
     transition: all 0.5s;
+    border-bottom: 2px solid transparent; 
   }
   .nav-link:hover {
     color: rgb(255, 255, 81);
@@ -30,10 +31,19 @@
     @extend .navigation-image;
   }
 
-  .logo {
+  /* .logo {
     @extend .navigation-image;
-  }
+  } */
 }
 .active{
-  color: #fff !important;
+  color: rgb(255, 255, 81) !important;
+  border-bottom: rgb(255, 255, 81) 2px solid !important;
+}
+
+.logo-img{
+  width: 85px;
+}
+.logo-img img{
+  width: 100%;
+  height: auto;
 }
