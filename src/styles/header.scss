@@ -1,35 +1,35 @@
 // если захочешь обсудим в выходные и перепишем в другом стиле
-.navigation-image{
+.navigation-image {
   max-width: 40px;
   height: 40px;
 }
 
-.navigation{
+.navigation {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   padding: 0 40px;
   background: rgba(66, 134, 244, 0.8);
 
-  .nav-list-right{
+  .nav-list-right {
     display: flex;
     align-items: center;
   }
-  .nav-link{
+  .nav-link {
     text-decoration: none;
     padding: 20px 10px;
     color: rgba(53, 50, 50, 0.8);
     font-size: 24px;
   }
-  .nav-link:hover{
+  .nav-link:hover {
     color: rgb(0, 0, 0);
   }
 
-  .cart{
+  .cart {
     @extend .navigation-image;
   }
 
-  .logo{
+  .logo {
     @extend .navigation-image;
   }
 }
