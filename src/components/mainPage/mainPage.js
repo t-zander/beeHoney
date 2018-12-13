@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/mainPage.scss";
 import beeMovie from "../../assets/videos/beeMovie.mp4";
-const mainPage = () => {
+const MainPage = () => {
   return (
     <div className="mainPage">
       <video autoPlay muted loop className="mainPage__video">
@@ -17,4 +17,4 @@ const mainPage = () => {
   );
 };
 
-export default mainPage;
+export default MainPage;

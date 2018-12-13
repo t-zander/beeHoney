@@ -1,49 +1,67 @@
 // если захочешь обсудим в выходные и перепишем в другом стиле
-.navigation-image {
-  max-width: 40px;
-  height: 40px;
-}
-
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
+.header {
   background: black;
+  display: flex;
+  padding: 10px 30px 10px 15px;
+  justify-content: space-between;
+  &__logo {
+    width: 65px;
+  }
+  &__logoImg {
+    width: 100%;
+    border: none !important;
+  }
 
-  .nav-list-right {
+  &__navigation {
     display: flex;
     align-items: center;
   }
-  .nav-link {
+
+  &__navLink {
     text-decoration: none;
-    padding: 20px 10px;
+    color: #e5e5e5;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.6s;
+    &.active {
+      color: #ffc31e;
+      border: 2px solid #ffc31e;
+      &:hover {
+        border: 2px solid #ffc31e;
+      }
+    }
+
+    &:hover {
+      border: 2px solid #e5e5e5;
+    }
+  }
+
+  &__shop {
     color: #fff;
-    font-size: 22px;
-    transition: all 0.5s;
-    border-bottom: 2px solid transparent; 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    i {
+      z-index: 100;
+    }
   }
-  .nav-link:hover {
-    color: rgb(255, 255, 81);
+  &__shopCalc {
+    z-index: 5;
+    position: absolute;
+    background: #e20000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    top: -10px;
+    right: -13px;
   }
-
-  .cart {
-    @extend .navigation-image;
-  }
-
-  /* .logo {
-    @extend .navigation-image;
-  } */
-}
-.active{
-  color: rgb(255, 255, 81) !important;
-  border-bottom: rgb(255, 255, 81) 2px solid !important;
-}
-
-.logo-img{
-  width: 85px;
-}
-.logo-img img{
-  width: 100%;
-  height: auto;
 }
