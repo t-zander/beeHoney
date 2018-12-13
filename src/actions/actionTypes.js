@@ -1,0 +1,5 @@
+/* about us page */
+export const FETCH_ABOUT = 'FETCH_ABOUT';
+export const FETCH_ABOUT_START = 'FETCH_ABOUT_START';
+export const FETCH_ABOUT_SUCCESS = 'FETCH_ABOUT_SUCCESS';
+export const FETCH_ABOUT_FAILED = 'FETCH_ABOUT_FAILED';
