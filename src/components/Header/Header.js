@@ -25,20 +25,30 @@ const header = () => {
   ];
 
   return (
-    <nav className="navigation">
-      <div className="logo-img">
-        <img src={logo} alt="logo" className="logo" />
+    <header className="header">
+      <div className="header__logo">
+        <NavLink to="/">
+          <img src={logo} alt="logo" className="header__logoImg" />
+        </NavLink>
       </div>
-      
-      <ul className="nav-list-right">
+      <nav className="header__navigation">
         {navigationItems.map((item, index) => (
-          <NavLink to={item.path} exact className="nav-link" activeClassName="active" key={index}>
+          <NavLink
+            key={index}
+            to={item.path}
+            exact
+            className="header__navLink"
+            activeClassName="active"
+          >
             {item.text}
           </NavLink>
         ))}
-        <img src={shoppingCart} alt="shopping cart" className="cart" />
-      </ul>
-    </nav>
+        <div className="header__shop">
+          <i className="material-icons">shopping_cart</i>
+          <div className="header__shopCalc">2</div>
+        </div>
+      </nav>
+    </header>
   );
 };
 
