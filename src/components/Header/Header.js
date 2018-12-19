@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../../styles/header.scss";
-import shoppingCart from "../../assets/images/shopping-cart.png";
 import logo from "../../assets/images/logo.png";
 
 const header = () => {
