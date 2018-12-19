@@ -8,11 +8,18 @@ class About extends Component {
     this.props.onFetchAbout();
   }
   
-  render() { 
+  render() {   
     return ( 
-      <React.Fragment>
-        {/* <p>{this.props.about.about}</p> */}
-      </React.Fragment>
+      <div className="container">
+        <h1>О нас</h1>
+        <hr/>
+        <div>
+          <img src={this.props.about.imageUrl} alt=""/>
+        </div>
+        <p>{this.props.about.about}</p>
+        <hr/>
+        <h1>Контакты: </h1>
+      </div>
     );
   }
 }
