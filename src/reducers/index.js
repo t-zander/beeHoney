@@ -6,7 +6,7 @@ import aboutReducer from './about';
 
 export default combineReducers({
   form: formReducer,
-  blog: blogReducer,
-  products: productsReducer,
-  about: aboutReducer
+  blogReducer: blogReducer,
+  productsReducer: productsReducer,
+  aboutReducer: aboutReducer
 }); 

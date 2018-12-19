@@ -32,8 +32,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.about.about);
-  return {about: state.about.about};
+  return {about: state.aboutReducer.about};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(About);

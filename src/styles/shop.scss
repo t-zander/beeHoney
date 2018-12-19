@@ -1,0 +1,14 @@
+.shop{
+  display: flex;
+  height: calc(100vh - 73.69px);
+  &__products{
+    background: red;
+    width: 85%;
+    
+  }
+
+  &__sidebar{
+    background: green;
+    width: 15%;
+  }
+}
