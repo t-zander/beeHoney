@@ -1,10 +1,22 @@
 .shop{
   display: flex;
   height: calc(100vh - 73.69px);
+
   &__products{
-    background: red;
+    position: relative;
+    background: url('../assets/images/products-background.jpg') no-repeat;
+    background-size: cover;
     width: 85%;
-    
+  }
+
+  &__products:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(15, 15, 15, 0.7);
+    content: "";
   }
 
   &__sidebar{
