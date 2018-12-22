@@ -14,7 +14,7 @@ class ProductsContainer extends Component {
   render() { 
     return (
       <div className="productsContainer">
-        {this.props.products.map(product => <Product key={product.id} product={product}/> )}
+        {this.props.products.map(product => <Product key={product._id} product={product}/> )}
       </div>
     );
   }

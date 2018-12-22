@@ -1,35 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  products: [
-    {
-      id: 1,
-      price: 100,
-      name: 'product 1',
-      description: 'super product'
-    },
-    {
-      id: 2,
-      price: 200,
-      name: 'product 2',
-      description: 'super product 2'
-    }
-  ],
+  products: [],
   loading: false
-  /* products: {
-    productIds: [1, 2],
-    1: {
-      id: 1,
-      price: 100,
-      description: 'super product'
-    },
-
-    2: {
-      id: 2,
-      price: 200,
-      description: 'super product'
-    }
-  } */
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -41,6 +14,7 @@ const productsReducer = (state = initialState, action) => {
       }
       
     case actionTypes.FETCH_PRODUCTS_SUCCESS:
+    console.log(action.payload);
       return {
         ...state,
         products: action.payload,

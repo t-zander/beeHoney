@@ -9,17 +9,17 @@ const Product = (props) => {
         <img src={productImage} alt="" className="product__image"/>
       </div>
       <div className="product__container">
-        <h4 className="product__title">
+        <h2 className="product__container__title">
           {props.product.name}
-        </h4>
-        <p className="product__description">
+        </h2>
+        <p className="product__container__description">
           {props.product.description}
         </p>
-        <h3 className="product__price">
-          {props.product.price}
+        <h3 className="product__container__price">
+          Цена: {props.product.price} грн
         </h3>
 
-        <button className="product__btn">В корзину</button>
+        <button className="product__container__btn">В корзину</button>
       </div>
     </div>
   );
