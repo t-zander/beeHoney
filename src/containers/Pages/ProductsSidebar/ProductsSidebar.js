@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 
 import { connect } from 'react-redux';
-import * as actions from '../../../actions/categories/categories';
+import * as categoriesActions from '../../../actions/categories/categories';
+import * as productsActions from '../../../actions/products/products';
+
 
 import '../../../styles/productsSidebar.scss'
 
@@ -11,13 +13,21 @@ class ProductsSidebar extends Component {
     this.props.onFetchCategories();
   }
 
+  selectCategory(categoryId) {
+    this.props.onSelectProductsFromCategory(categoryId);
+  }
+
   render() { 
     return (
       <div className="categories">
         <h2>Категории:</h2>
         <ul className="categories__list">
           {this.props.categories.map( category => 
-            <li className="categories__list__item" key={category._id}>
+            <li 
+              className="categories__list__item" 
+              key={category._id}
+              onClick={() => this.selectCategory(category._id)}
+              >
               {category.name}
             </li>
           )}
@@ -30,7 +40,8 @@ class ProductsSidebar extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    onFetchCategories: () => dispatch( actions.fetchAll() )
+    onFetchCategories: () => dispatch( categoriesActions.fetchAll() ),
+    onSelectProductsFromCategory: (categoryId) => dispatch( productsActions.fetchByCategory(categoryId) )
   }
 }
  
