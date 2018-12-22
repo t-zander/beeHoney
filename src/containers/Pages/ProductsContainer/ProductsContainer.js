@@ -4,6 +4,8 @@ import Product from '../../../components/Product/Product';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions/products/products';
 
+import '../../../styles/products.scss'
+
 class ProductsContainer extends Component {
   componentDidMount() {
     this.props.onFetchProducts();
@@ -11,9 +13,9 @@ class ProductsContainer extends Component {
 
   render() { 
     return (
-      <React.Fragment>
+      <div className="productsContainer">
         {this.props.products.map(product => <Product key={product.id} product={product}/> )}
-      </React.Fragment>
+      </div>
     );
   }
 }
