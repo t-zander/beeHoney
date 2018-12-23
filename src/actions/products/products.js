@@ -26,6 +26,7 @@ export const fetchAll = () => {
   - диспатчим экшн "fetchSuccess"
 */
 export const fetchByCategory = (categoryId) => {
+  console.log('fetch products by category id:', categoryId);
   return(dispatch) => {
     dispatch(fetchStart());
     return axios.get(`${config.serverUrl}products/${categoryId}`)

@@ -14,7 +14,6 @@ const productsReducer = (state = initialState, action) => {
       }
       
     case actionTypes.FETCH_PRODUCTS_SUCCESS:
-    console.log(action.payload);
       return {
         ...state,
         products: action.payload,
