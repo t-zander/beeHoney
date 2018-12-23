@@ -9,27 +9,51 @@ import '../../../styles/productsSidebar.scss'
 
 class ProductsSidebar extends Component {
 
+  state = {
+    selectedCategoryId: null
+  }
+
   componentDidMount() {
     this.props.onFetchCategories();
   }
 
-  selectCategory(categoryId) {
+  selectCategory = (categoryId) => {
+    this.setState({
+      selectedCategoryId: categoryId
+    });
     this.props.onSelectProductsFromCategory(categoryId);
   }
 
-  render() { 
+  selectAllProducts = () => {
+    this.setState({
+      selectedCategoryId: null
+    });
+    this.props.onSelectAllProducts();
+  }
+
+  render() {
+    
     return (
       <div className="categories">
         <h2>Категории:</h2>
+        {/* 
+          нужно решить оставить так или сделать роутами
+        */}
         <ul className="categories__list">
-          {this.props.categories.map( category => 
-            <li 
-              className="categories__list__item" 
+          <li className={this.state.selectedCategoryId === null ? 
+              'categories__list__item active' : 'categories__list__item'} 
+              onClick={this.selectAllProducts}>Все товары
+          </li>
+          {this.props.categories.map( category => {
+            return <li 
+              className={this.state.selectedCategoryId === category._id ? 
+                'categories__list__item active' : 'categories__list__item'}
               key={category._id}
               onClick={() => this.selectCategory(category._id)}
               >
               {category.name}
             </li>
+            }
           )}
         </ul>
       </div>
@@ -41,6 +65,7 @@ class ProductsSidebar extends Component {
 const mapDispatchToProps = (dispatch) => {
   return{
     onFetchCategories: () => dispatch( categoriesActions.fetchAll() ),
+    onSelectAllProducts: () => dispatch( productsActions.fetchAll() ),
     onSelectProductsFromCategory: (categoryId) => dispatch( productsActions.fetchByCategory(categoryId) )
   }
 }
