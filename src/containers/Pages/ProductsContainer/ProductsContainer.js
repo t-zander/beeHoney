@@ -11,10 +11,16 @@ class ProductsContainer extends Component {
     this.props.onFetchProducts();
   }
 
+  onAddProductToCart = (productId) => {
+    this.props.onAddToCart(productId);
+  }
+
   render() { 
     return (
       <div className="productsContainer">
-        {this.props.products.map(product => <Product key={product._id} product={product}/> )}
+        {this.props.products.map(product => (
+          <Product key={product._id} product={product} onAddToCart={this.onAddProductToCart}/> )
+        )}
       </div>
     );
   }
@@ -22,7 +28,8 @@ class ProductsContainer extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchProducts: () => dispatch( actions.fetchAll() )
+    onFetchProducts: () => dispatch( actions.fetchAll() ),
+    onAddToCart: (productId) => dispatch( actions.onAddProductToCart(productId) )
   }
 }
 

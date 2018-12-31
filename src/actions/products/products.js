@@ -48,3 +48,10 @@ export const fetchSuccess = (data) => {
     payload: data
   }
 }
+
+export const onAddProductToCart = (productId) => {
+  return {
+    type: actionTypes.ADD_PRODUCT_TO_CART,
+    payload: productId
+  }
+}
