@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   products: [],
+  productsInCart: [],
   loading: false
 };
 
@@ -19,7 +20,13 @@ const productsReducer = (state = initialState, action) => {
         products: action.payload,
         loading: false
       }
-      
+    
+    case actionTypes.ADD_PRODUCT_TO_CART:
+      return {
+        ...state,
+        productsInCart: [...state.productsInCart, action.payload]
+      }
+
     default:
       return state;
   }
