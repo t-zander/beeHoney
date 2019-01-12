@@ -1,4 +1,7 @@
+import {createSelector} from 'reselect';
 import * as actionTypes from '../actions/actionTypes';
+import {addProductsToLS} from '../helpers/helpers';
+
 
 const initialState = {
   products: [],
@@ -22,6 +25,8 @@ const productsReducer = (state = initialState, action) => {
       }
     
     case actionTypes.ADD_PRODUCT_TO_CART:
+      addProductsToLS(action.payload);
+      
       return {
         ...state,
         productsInCart: [...state.productsInCart, action.payload]
@@ -30,6 +35,14 @@ const productsReducer = (state = initialState, action) => {
     default:
       return state;
   }
+}
+
+export const getProducts = (state) => {
+  return state.products;
+}
+
+export const getProductsInCart = (state) => {
+  return state.productsInCart;
 }
 
 export default productsReducer;
