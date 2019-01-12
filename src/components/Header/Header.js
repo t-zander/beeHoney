@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import CartList from "../../containers/CartList/CartList";
 import logo from "../../assets/images/logo.png";
+import { withRouter } from "react-router";
 
 class Header extends React.Component {
   state = {
@@ -77,9 +78,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  null,
-  null,
-  { pure: false }
-)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
