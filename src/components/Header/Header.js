@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import "../../styles/header.scss";
+import "./Header.scss";
 import logo from "../../assets/images/logo.png";
 
 class Header extends React.Component {
@@ -24,7 +24,7 @@ class Header extends React.Component {
     }
   ];
 
-  render(){
+  render() {
     return (
       <header className="header">
         <div className="header__logo">
@@ -54,13 +54,12 @@ class Header extends React.Component {
       </header>
     );
   }
-  
-};
+}
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     productsInCart: state.productsReducer.productsInCart
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(Header);

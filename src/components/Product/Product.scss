@@ -1,12 +1,4 @@
-.productsContainer{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0 10px;
-  flex: 1;
-}
-
-.product{
+.product {
   width: 23%;
   z-index: 1;
   margin: 10px 0;
@@ -22,11 +14,11 @@
   box-sizing: border-box;
   text-align: center;
   margin: 10px 0;
-  
-  &__btn{
+
+  &__btn {
     font-size: 18px;
     font-weight: bold;
-    color: rgba(5,5,5,1);
+    color: rgba(5, 5, 5, 1);
     border: 2px transparent;
     margin-top: 10px;
     border-radius: 5px;
@@ -34,7 +26,7 @@
     padding: 8px;
     transition: all 0.6s;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
       background: #ffc31e;
       border: 2px solid #ffc31e;
@@ -42,13 +34,13 @@
     }
   }
 
-  &__imageContainer{
+  &__imageContainer {
     max-width: 100%;
   }
-  &__image{
+  &__image {
     max-width: 100%;
   }
-  &:hover{
-    box-shadow: 8px 8px 21px -4px rgba(5,5,5,1);
+  &:hover {
+    box-shadow: 8px 8px 21px -4px rgba(5, 5, 5, 1);
   }
 }
