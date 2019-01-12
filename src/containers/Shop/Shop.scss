@@ -1,11 +1,11 @@
-.shop{
+.shop {
   display: flex;
   min-height: calc(100vh - 73.69px);
   position: relative;
-  background: url('../assets/images/products-background.jpg') no-repeat;
+  background: url("../../assets/images/products-background.jpg") no-repeat;
   background-size: cover;
-  
-  &__products{
+
+  &__products {
     width: 85%;
   }
 
@@ -19,7 +19,7 @@
     content: "";
   }
 
-  &__sidebar{
+  &__sidebar {
     width: 15%;
     z-index: 1;
     background: rgba(211, 221, 229, 0.4);

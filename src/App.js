@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Layout from "./containers/Layout/Layout";
 import Header from "./components/Header/Header";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import MainPage from "./containers/MainPage/MainPage";
 import ShopPage from "./containers/Shop/Shop";
 import AboutPage from "./containers/About/About";
@@ -13,10 +13,12 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Layout>
-          <Route path="/" exact component={MainPage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/blog" component={BlogPage} />
+          <Switch>
+            <Route path="/about" component={AboutPage} />
+            <Route path="/blog" component={BlogPage} />
+            <Route path="/shop" component={ShopPage} />
+            <Route path="/" component={MainPage} />
+          </Switch>
         </Layout>
       </React.Fragment>
     );
