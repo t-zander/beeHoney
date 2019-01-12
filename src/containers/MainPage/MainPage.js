@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/mainPage.scss";
 import beeMovie from "../../assets/videos/beeMovie.mp4";
+
 const MainPage = () => {
   return (
     <div className="mainPage">
@@ -9,9 +10,21 @@ const MainPage = () => {
       </video>
       <div className="mainPage__content">
         <p className="mainPage__title">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Натуральный мёд
         </p>
-        <button className="mainPage__btn">Перейти</button>
+        <p className="mainPage__description">
+          Позвольте полезным продуктам стать частью вашего рациона
+        </p>
+
+        <div className="mainPage__btnGroup">
+          <button className="mainPage__btn">Заказать</button>
+          <i className="material-icons mainPage__add">
+            add
+          </i>
+          <p className="mainPage__text">
+            Подробнее о продуктах
+          </p>
+        </div>
       </div>
     </div>
   );
