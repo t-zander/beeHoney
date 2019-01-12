@@ -21,8 +21,8 @@ const Product = (props) => {
           Цена: {product.price} грн
         </h3>
       </div>
-      <button className="product__btn" 
-        onClick={() => props.onAddToCart(product._id)} >
+      <button className="btnDefault" 
+        onClick={() => props.onAddToCart(product)} >
         В корзину
       </button>
     </div>

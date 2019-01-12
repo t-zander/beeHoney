@@ -11,8 +11,8 @@ class ProductsContainer extends Component {
     this.props.onFetchProducts();
   }
 
-  onAddProductToCart = (productId) => {
-    this.props.onAddToCart(productId);
+  onAddProductToCart = (product) => {
+    this.props.onAddToCart(product);
   }
 
   render() { 
@@ -29,7 +29,7 @@ class ProductsContainer extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchProducts: () => dispatch( actions.fetchAll() ),
-    onAddToCart: (productId) => dispatch( actions.onAddProductToCart(productId) )
+    onAddToCart: (product) => dispatch( actions.onAddProductToCart(product) )
   }
 }
 
