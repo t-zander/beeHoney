@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/mainPage.scss";
+import "./mainPage.scss";
 import beeMovie from "../../assets/videos/beeMovie.mp4";
 import {Link} from "react-router-dom";
 
