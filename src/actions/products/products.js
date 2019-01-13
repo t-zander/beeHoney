@@ -29,7 +29,7 @@ export const fetchByCategory = (categoryId) => {
   console.log('fetch products by category id:', categoryId);
   return(dispatch) => {
     dispatch(fetchStart());
-    return axios.get(`${config.serverUrl}products/${categoryId}`)
+    return axios.get(`${config.serverUrl}products/category/${categoryId}`)
       .then(response => {
         dispatch(fetchSuccess(response.data))
       })
