@@ -3,6 +3,14 @@
   height: 100%;
   overflow: hidden;
 
+  &__video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
   &__content {
     position: absolute;
     color: #fff;
@@ -49,32 +57,37 @@
       /*padding: 26px 70px;*/
     }
   }
-  &__add{
-    color: #01a51e;
-    font-weight: bold;
-    margin-right: 30px;
-    padding: 24px;
-    border: 4px solid #01a51e;
-    border-radius: 50%;
-    transition: all 0.4s;
-    &:hover{
-      cursor: pointer;
-      /*padding: 26px;*/
-    }
-  }
-  &__text{
+  &__aboutLink{
+    text-decoration: none;
+    color: #fff;
     font-family: "Circe Light";
     font-size: 24px;
+
+    .add{
+      color: #01a51e;
+      font-weight: bold;
+      margin-right: 30px;
+      padding: 24px;
+      border: 4px solid #01a51e;
+      border-radius: 50%;
+      transition: all 0.4s;
+    }
+    .details{
+      transition: all 0.4s;
+    }
+    
+    &:hover{
+      .add{
+        border-color: #fff;
+        color: #fff;
+      }
+      .details{
+        color: #01a51e;
+      }
+    }
   }
 
-  &__video {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
+  
   &:after {
     position: absolute;
     top: 0;
