@@ -39,31 +39,44 @@ class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <header className="header">
-          <div className="header__logo">
-            <NavLink to="/">
-              <img src={logo} alt="logo" className="header__logoImg" />
-            </NavLink>
-          </div>
-          <nav className="header__navigation">
-            {this.navigationItems.map((item, index) => (
-              <NavLink
-                key={index}
-                to={item.path}
-                exact
-                className="header__navLink"
-                activeClassName="active"
-              >
-                {item.text}
+        <header
+          className="header"
+          style={
+            window.location.pathname === "/admin"
+              ? {
+                  display: "none"
+                }
+              : { display: "block" }
+          }
+        >
+          <div className="header__wrapper">
+            <div className="header__logo">
+              <NavLink to="/">
+                <img src={logo} alt="logo" className="header__logoImg" />
               </NavLink>
-            ))}
-            <div onClick={this.onToggleCartList} className="header__shop">
-              <i className="material-icons">shopping_cart</i>
-              <div className="header__shopCalc">
-                {this.props.productsInCart.length}
-              </div>
             </div>
-          </nav>
+            <nav className="header__navigation">
+              {this.navigationItems.map((item, index) => (
+                <NavLink
+                  key={index}
+                  to={item.path}
+                  exact
+                  className="header__navLink"
+                  activeClassName="active"
+                >
+                  {item.text}
+                </NavLink>
+              ))}
+
+              <div onClick={this.onToggleCartList} className="header__shop">
+                <i className="material-icons">shopping_cart</i>
+                <div className="header__shopCalc">
+                  {this.props.productsInCart.length}
+                </div>
+              </div>
+              <p className="header__phone">+38 067 596-05-31</p>
+            </nav>
+          </div>
         </header>
 
         {this.state.isCartListShown && <CartList />}

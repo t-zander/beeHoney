@@ -1,0 +1,46 @@
+header {
+  display: none;
+}
+
+.admin {
+  display: flex;
+  height: 100vh;
+  background: #1a1d21;
+  &__sideBar {
+    box-shadow: 6px 9px 16px -2px rgba(0, 0, 0, 0.75);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  &__name {
+    padding: 15px;
+    font-style: italic;
+    background: #59c4ff;
+    margin-bottom: 20px;
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 22px;
+    }
+  }
+
+  &__navItem {
+    padding: 10px 15px;
+    font-weight: 500;
+    color: #727272;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      border-left: 4px solid #59c4ff;
+    }
+  }
+  .active {
+    color: #59c4ff;
+    border-left: 4px solid #59c4ff;
+    font-weight: 600;
+  }
+}

@@ -6,6 +6,7 @@ import MainPage from "./containers/MainPage/MainPage";
 import ShopPage from "./containers/Shop/Shop";
 import AboutPage from "./containers/About/About";
 import BlogPage from "./containers/Blog/Blog";
+import Admin from "./containers/Admin/Admin";
 
 class App extends Component {
   render() {
@@ -14,10 +15,22 @@ class App extends Component {
         <Header />
         <Layout>
           <Switch>
+            <Route path="/admin" component={Admin} />
             <Route path="/about" component={AboutPage} />
             <Route path="/blog" component={BlogPage} />
             <Route path="/shop" component={ShopPage} />
-            <Route path="/" component={MainPage} />
+            <Route path="/" exact component={MainPage} />
+            <Route
+              render={() => (
+                <h3
+                  style={{
+                    background: "green"
+                  }}
+                >
+                  OOOOPS 404 error
+                </h3>
+              )}
+            />
           </Switch>
         </Layout>
       </React.Fragment>

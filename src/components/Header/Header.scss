@@ -1,11 +1,16 @@
 .header {
-  display: flex;
+  display: block;
   padding: 10px 30px 10px 15px;
   justify-content: space-between;
   position: relative;
   z-index: 20;
   background: transparent;
-
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1400px;
+  }
   &__logo {
     width: 65px;
   }
@@ -24,10 +29,10 @@
     text-decoration: none;
     color: #e5e5e5;
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px 20px;
     border-bottom: 1px solid transparent;
-    transition: all 0.6s;
+    transition: all 0.3s;
     &.active {
       color: #02b422;
       border-bottom: 1px solid #02b422;
@@ -37,6 +42,10 @@
       color: #02b422;
     }
   }
+  &__phone {
+    color: #fee900;
+    margin-left: 25px;
+  }
 
   &__shop {
     color: #fff;
@@ -44,23 +53,28 @@
     align-items: center;
     cursor: pointer;
     position: relative;
+
     i {
+      transition: all 0.3s;
       z-index: 100;
+      &:hover {
+        color: #02b422;
+      }
     }
   }
   &__shopCalc {
-    z-index: 5;
+    z-index: 200;
     position: absolute;
     background: #e20000;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 500;
     top: -10px;
-    right: -13px;
+    right: -15px;
   }
 }
