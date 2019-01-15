@@ -1,37 +1,42 @@
 import React, { Component } from "react";
 import "./Admin.scss";
-import logo from "../../assets/images/logo.png";
-import { Link, NavLink } from "react-router-dom";
-import { withRouter } from "react-router";
+import * as categoriesActions from "../../actions/categories/categories";
+import { connect } from "react-redux";
 class Admin extends Component {
+  componentWillMount() {
+    this.props.onFetchCategories();
+  }
+
   render() {
     return (
       <div className="admin">
-        <div className="admin__sideBar">
-          <div className="admin__name">
-            <Link to="/">Bee Honey</Link>
-          </div>
-          <NavLink
-            exact
-            activeClassName="active"
-            to="/admin"
-            className="admin__navItem"
-          >
-            <i className="fab fa-forumbee" />
-            Kатегории
-          </NavLink>
-          <NavLink to="/admin/products" className="admin__navItem">
-            <i className="fas fa-user-alt" />О нас
-          </NavLink>
-          <NavLink to="/admin/blog" className="admin__navItem">
-            <i className="fas fa-money-bill-alt" />
-            Заказы
-          </NavLink>
+        <div className="admin__categories">
+          {this.props.categories.map(category => {
+            return (
+              <div key={category._id} className="admin__category">
+                <h1>{category.name}</h1>
+              </div>
+            );
+          })}
         </div>
-        <div>Content</div>
       </div>
     );
   }
 }
 
-export default withRouter(Admin);
+const mapStateToProps = state => {
+  return {
+    categories: state.categoriesReducer.categories
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchCategories: () => dispatch(categoriesActions.fetchAll())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Admin);

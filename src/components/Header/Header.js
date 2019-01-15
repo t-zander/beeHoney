@@ -39,24 +39,7 @@ class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <header
-          className="header"
-          style={
-            window.location.pathname === "/admin"
-              ? {
-                  display: "none"
-                }
-              : window.location.pathname === "/admin/products"
-              ? {
-                  display: "none"
-                }
-              : window.location.pathname === "/admin/blog"
-              ? {
-                  display: "none"
-                }
-              : { display: "block" }
-          }
-        >
+        <header className="header">
           <div className="header__wrapper">
             <div className="header__logo">
               <NavLink to="/">
