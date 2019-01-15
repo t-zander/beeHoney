@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./Admin.scss";
 import logo from "../../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { withRouter } from "react-router";
 class Admin extends Component {
   render() {
     return (
@@ -10,9 +11,22 @@ class Admin extends Component {
           <div className="admin__name">
             <Link to="/">Bee Honey</Link>
           </div>
-          <p className="admin__navItem active">Kатегории</p>
-          <p className="admin__navItem">Tовары</p>
-          <p className="admin__navItem">Блог</p>
+          <NavLink
+            exact
+            activeClassName="active"
+            to="/admin"
+            className="admin__navItem"
+          >
+            <i className="fab fa-forumbee" />
+            Kатегории
+          </NavLink>
+          <NavLink to="/admin/products" className="admin__navItem">
+            <i className="fas fa-user-alt" />О нас
+          </NavLink>
+          <NavLink to="/admin/blog" className="admin__navItem">
+            <i className="fas fa-money-bill-alt" />
+            Заказы
+          </NavLink>
         </div>
         <div>Content</div>
       </div>
@@ -20,4 +34,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default withRouter(Admin);

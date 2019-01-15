@@ -4,6 +4,7 @@ header {
 
 .admin {
   display: flex;
+
   height: 100vh;
   background: #1a1d21;
   &__sideBar {
@@ -14,14 +15,15 @@ header {
   }
   &__name {
     padding: 15px;
-    font-style: italic;
     background: #59c4ff;
     margin-bottom: 20px;
+    font-family: "Pattaya", sans-serif;
+
     a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
-      font-size: 22px;
+      font-size: 28px;
     }
   }
 
@@ -34,6 +36,7 @@ header {
     border-left: 4px solid transparent;
     cursor: pointer;
     transition: all 0.3s;
+    font-family: "Montserrat", sans-serif;
     &:hover {
       border-left: 4px solid #59c4ff;
     }

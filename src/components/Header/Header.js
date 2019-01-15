@@ -46,6 +46,14 @@ class Header extends React.Component {
               ? {
                   display: "none"
                 }
+              : window.location.pathname === "/admin/products"
+              ? {
+                  display: "none"
+                }
+              : window.location.pathname === "/admin/blog"
+              ? {
+                  display: "none"
+                }
               : { display: "block" }
           }
         >
