@@ -7,6 +7,7 @@ import ShopPage from "./containers/Shop/Shop";
 import AboutPage from "./containers/About/About";
 import BlogPage from "./containers/Blog/Blog";
 import Admin from "./containers/Admin/Admin";
+import AdminLogin from "./containers/AdminLogin/AdminLogin";
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <Header />
         <Layout>
           <Switch>
+            <Route path="/admin/login" component={AdminLogin} />
             <Route path="/admin" component={Admin} />
             <Route path="/about" component={AboutPage} />
             <Route path="/blog" component={BlogPage} />
