@@ -102,7 +102,6 @@ section {
 }
 body {
   line-height: 1;
-  font-family: "Montserrat", sans-serif;
 }
 ol,
 ul {
@@ -124,25 +123,24 @@ table {
   border-spacing: 0;
 }
 
-
-h1{
+h1 {
   font-size: 34px;
 }
 
-h2{
+h2 {
   font-size: 28px;
 }
-h3{
+h3 {
   font-size: 22px;
 }
-.container{
+.container {
   padding: 1rem;
 }
 
-.btnDefault{
+.btnDefault {
   font-size: 18px;
   font-weight: bold;
-  color: rgba(5,5,5,1);
+  color: rgba(5, 5, 5, 1);
   border: 2px transparent;
   margin-top: 10px;
   border-radius: 5px;
@@ -150,7 +148,7 @@ h3{
   padding: 8px;
   transition: all 0.6s;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     background: #ffc31e;
     border: 2px solid #ffc31e;
@@ -158,32 +156,7 @@ h3{
   }
 }
 
-@font-face {
-  font-family: 'Coco';
-  src: url('./assets/fonts/coco/Coco-Gothic-Heavy-trial.eot');
-  src: url('./assets/fonts/coco/CocoGothic-Heavy.woff') format('woff'),
-  url('./assets/fonts/coco/CocoGothic-Heavy.ttf') format('truetype'),
-  url('./assets/fonts/coco/Coco-Gothic-Heavy-trial.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Circe Light';
-  src: url('./assets/fonts/circe/circe-light/Circe-Light.eot');
-  src: url('./assets/fonts/circe/circe-light/Circe-Light.woff') format('woff'),
-  url('./assets/fonts/circe/circe-light/Circe-Light.ttf') format('truetype'),
-  url('./assets/fonts/circe/circe-light/Circe-Light.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Circe Regular';
-  src: url('./assets/fonts/circe/circe-regular/Circe-Regular.eot');
-  src: url('./assets/fonts/circe/circe-regular/Circe-Regular.woff') format('woff'),
-  url('./assets/fonts/circe/circe-regular/Circe-Regular.ttf') format('truetype'),
-  url('./assets/fonts/circe/circe-regular/Circe-Regular.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
+body {
+  font-family: "Ubuntu", sans-serif !important;
+  overflow-y: scroll;
 }

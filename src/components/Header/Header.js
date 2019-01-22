@@ -18,7 +18,7 @@ class Header extends React.Component {
     },
     {
       path: "/shop",
-      text: "Товары"
+      text: "Продукция"
     },
     {
       path: "/about",
@@ -65,7 +65,6 @@ class Header extends React.Component {
                   {this.props.productsInCart.length}
                 </div>
               </div>
-              <p className="header__phone">+38 067 596-05-31</p>
             </nav>
           </div>
         </header>
