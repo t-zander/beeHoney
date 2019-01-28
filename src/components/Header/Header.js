@@ -18,7 +18,7 @@ class Header extends React.Component {
     },
     {
       path: "/shop",
-      text: "Товары"
+      text: "Продукция"
     },
     {
       path: "/about",
@@ -39,16 +39,7 @@ class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <header
-          className="header"
-          style={
-            window.location.pathname === "/admin"
-              ? {
-                  display: "none"
-                }
-              : { display: "block" }
-          }
-        >
+        <header className="header">
           <div className="header__wrapper">
             <div className="header__logo">
               <NavLink to="/">
@@ -74,7 +65,6 @@ class Header extends React.Component {
                   {this.props.productsInCart.length}
                 </div>
               </div>
-              <p className="header__phone">+38 067 596-05-31</p>
             </nav>
           </div>
         </header>
