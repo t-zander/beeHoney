@@ -8,8 +8,14 @@ import { withRouter } from "react-router";
 
 class Header extends React.Component {
   state = {
-    isCartListShown: false
+    isCartListShown: false,
+    transform: null
   };
+  componentDidMount() {
+    if (this.props.location.pathname.includes("shop")) {
+      window.addEventListener("scroll", this.handleScroll);
+    }
+  }
 
   navigationItems = [
     {
@@ -36,10 +42,29 @@ class Header extends React.Component {
     this.setState({ isCartListShown: !this.state.isCartListShown });
   };
 
+  handleScroll = event => {
+    let windowYPosition = event.path[1].scrollY;
+    this.setState({
+      windowYPosition: windowYPosition
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
-        <header className="header">
+        <header
+          className="header"
+          style={
+            this.state.windowYPosition > 0
+              ? {
+                  background: "#404040",
+                  position: "fixed",
+                  width: "100%",
+                  boxSizing: "border-box"
+                }
+              : { background: "transparent" }
+          }
+        >
           <div className="header__wrapper">
             <div className="header__logo">
               <NavLink to="/">
@@ -51,7 +76,7 @@ class Header extends React.Component {
                 <NavLink
                   key={index}
                   to={item.path}
-                  exact
+                  exact={item.path === "/" ? true : false}
                   className="header__navLink"
                   activeClassName="active"
                 >
