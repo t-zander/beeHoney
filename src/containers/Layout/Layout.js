@@ -4,7 +4,7 @@ const layout = props => {
   return (
     <main
       style={
-        window.location.pathname === "/" || window.location.pathname === "/shop"
+        window.location.pathname === "/" || window.location.pathname.includes('/shop')
           ? {
               position: "absolute",
               top: 0,
