@@ -9,6 +9,7 @@
   &__product {
     max-width: 300px;
     width: 100%;
+    margin-bottom: 50px;
   }
   &__image {
     max-width: 300px;
@@ -39,13 +40,32 @@
     color: #ffb400;
   }
   &__add {
-    height: 65px;
-    width: 165px;
     box-sizing: border-box;
+    padding: 14px 65px;
     background: transparent;
-    -moz-border-image: -moz-linear-gradient(to bottom, #01b521, #05c26d);
-    -webkit-border-image: -webkit-linear-gradient(to bottom, #01b521, #05c26d);
-    border-image: linear-gradient(to bottom, #01b521, #05c26d);
-    border-image-slice: 1;
+    border: 2px solid #05c26c;
+    border-radius: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    
+    &:hover{
+      border: 2px solid transparent;
+      background: linear-gradient(to right, #30a06e, #02b521);
+    }
+   
+    i{
+      font-size: 25px;
+      color: #05c26c;
+      background: transparent;
+      font-weight: 300;
+      
+    }
+    &:hover i {
+      color: #fff;
+    }
   }
 }
