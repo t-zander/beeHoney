@@ -1,28 +1,91 @@
 .shop {
-  display: flex;
-  min-height: calc(100vh - 73.69px);
-  position: relative;
-  background: url("../../assets/images/products-background.jpg") no-repeat;
-  background-size: cover;
-
-  &__products {
-    width: 85%;
-  }
-
-  &__products:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+  &__mainContent {
+    height: 100vh;
     width: 100%;
-    background: rgba(15, 15, 15, 0.7);
-    content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../../assets/images/background-shop.png) no-repeat center
+      center;
+    background-size: cover;
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      content: "";
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 100;
+    }
   }
-
-  &__sidebar {
-    width: 15%;
-    z-index: 1;
-    background: rgba(211, 221, 229, 0.4);
-    box-shadow: -4px 0px 5px 0px rgba(2, 2, 2, 0.41);
+  &__chooseCateg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 200;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 58px;
+    color: #ffb400;
+    margin-bottom: 63px;
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    a{
+      color: #fff;
+      text-decoration: none;
+      font-size: 26px;
+      font-weight: 300;
+      margin-bottom: 17px;
+      position: relative;
+      &:last-child{
+        margin-bottom: 0;
+      }
+      &:before{
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: -41px;
+        height: 16px;
+        width: 16px;
+        border: 1px solid #fff;
+        background: transparent;
+        border-radius: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  &__active{
+    color: #fff !important;
+    &:before{
+      position: absolute;
+        content: "";
+        top: 50%;
+        left: -41px;
+        height: 16px;
+        width: 16px;
+        border: 1px solid #fff;
+        background: transparent;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        background: #fff !important;
+    }
+  }
+  &__arrow{
+    position: absolute;
+    z-index: 200;
+    bottom: 128px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s;
+    cursor: pointer;
+    &:hover{
+      bottom: 120px;
+    }
   }
 }

@@ -1,17 +1,15 @@
-import * as actionTypes from '../actionTypes';
-import axios from 'axios';
-import config from '../../config.json';
+import * as actionTypes from "../actionTypes";
+import axios from "axios";
+import config from "../../config.json";
 
 export const fetchAll = () => {
-  
-  return(dispatch) => {
+  return dispatch => {
     dispatch(fetchStart());
-    return axios.get(`${config.serverUrl}products`)
-      .then(response => {
-        dispatch(fetchSuccess(response.data))
-      })
-  }
-}
+    return axios.get(`${config.serverUrl}products`).then(response => {
+      dispatch(fetchSuccess(response.data));
+    });
+  };
+};
 
 /* 
   Можно сделать отдельные экшны для выборки по категории
@@ -25,33 +23,34 @@ export const fetchAll = () => {
   - в сторе меняем выбранную категорию (нужно подумать надо ли нам это)
   - диспатчим экшн "fetchSuccess"
 */
-export const fetchByCategory = (categoryId) => {
-  console.log('fetch products by category id:', categoryId);
-  return(dispatch) => {
+export const fetchByCategory = categoryId => {
+  return dispatch => {
     dispatch(fetchStart());
-    return axios.get(`${config.serverUrl}products/category/${categoryId}`)
+    return axios
+      .get(`${config.serverUrl}products/category/${categoryId}`)
       .then(response => {
-        dispatch(fetchSuccess(response.data))
-      })
-  }
-}
+        dispatch(fetchSuccess(response.data));
+        console.log("FETCH SUCCESS");
+      });
+  };
+};
 
 export const fetchStart = () => {
   return {
     type: actionTypes.FETCH_PRODUCTS_START
-  }
-}
+  };
+};
 
-export const fetchSuccess = (data) => {
+export const fetchSuccess = data => {
   return {
     type: actionTypes.FETCH_PRODUCTS_SUCCESS,
     payload: data
-  }
-}
+  };
+};
 
-export const onAddProductToCart = (productId) => {
+export const onAddProductToCart = productId => {
   return {
     type: actionTypes.ADD_PRODUCT_TO_CART,
     payload: productId
-  }
-}
+  };
+};

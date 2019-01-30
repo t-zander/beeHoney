@@ -8,8 +8,14 @@ import { withRouter } from "react-router";
 
 class Header extends React.Component {
   state = {
-    isCartListShown: false
+    isCartListShown: false,
+    transform: null
   };
+  componentDidMount() {
+    if (this.props.location.pathname.includes("shop")) {
+      window.addEventListener("scroll", this.handleScroll);
+    }
+  }
 
   navigationItems = [
     {
@@ -18,7 +24,7 @@ class Header extends React.Component {
     },
     {
       path: "/shop",
-      text: "Товары"
+      text: "Продукция"
     },
     {
       path: "/about",
@@ -36,25 +42,27 @@ class Header extends React.Component {
     this.setState({ isCartListShown: !this.state.isCartListShown });
   };
 
+  handleScroll = event => {
+    let windowYPosition = event.path[1].scrollY;
+    this.setState({
+      windowYPosition: windowYPosition
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
         <header
           className="header"
           style={
-            window.location.pathname === "/admin"
+            this.state.windowYPosition > 0
               ? {
-                  display: "none"
+                  background: "#404040",
+                  position: "fixed",
+                  width: "100%",
+                  boxSizing: "border-box"
                 }
-              : window.location.pathname === "/admin/products"
-              ? {
-                  display: "none"
-                }
-              : window.location.pathname === "/admin/blog"
-              ? {
-                  display: "none"
-                }
-              : { display: "block" }
+              : { background: "transparent" }
           }
         >
           <div className="header__wrapper">
@@ -68,7 +76,7 @@ class Header extends React.Component {
                 <NavLink
                   key={index}
                   to={item.path}
-                  exact
+                  exact={item.path === "/" ? true : false}
                   className="header__navLink"
                   activeClassName="active"
                 >
@@ -82,7 +90,6 @@ class Header extends React.Component {
                   {this.props.productsInCart.length}
                 </div>
               </div>
-              <p className="header__phone">+38 067 596-05-31</p>
             </nav>
           </div>
         </header>
