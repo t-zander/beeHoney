@@ -47,7 +47,6 @@ class ProductsLayout extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE", state);
   return {
     products: state.productsReducer
   };
