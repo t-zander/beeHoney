@@ -2,27 +2,31 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/products/products";
 import "./ProductsLayout.scss";
+import { NavLink } from 'react-router-dom';
 
 class ProductsLayout extends Component {
-  componentDidMount() {
-    this.props.onGetAllProducts(); /* 
-    this.props.onGetProductsByCategory(this.props.match.params.categoryId); */
+  componentDidMount() {/* 
+    this.props.onGetAllProducts();  */
+    this.props.onGetProductsByCategory(this.props.match.params.categoryId);
+
+  }
+
+  componentDidUpdate(prev){
+    if(this.props.match.params.categoryId !== prev.match.params.categoryId){
+      this.props.onGetProductsByCategory(this.props.match.params.categoryId);
+    }
   }
 
   render() {
-    console.log("PRODUCTS", this.props.products);
     return (
       <section className="productsList">
         <div className="wrapper">
           <div className="productsList__list">
-            {this.props.products
-              ? this.props.products.products.map(productsList => {
-                  return productsList.categoryId ===
-                    this.props.match.params.categoryId ? (
-                    <div
+           {this.props.products.products.map(productsList => {
+
+                  return <div
                       key={productsList._id}
-                      className="productsList__product"
-                    >
+                      className="productsList__product">
                       <div className="productsList__image">
                         <img src={productsList.imageUrl} />
                       </div>
@@ -31,14 +35,18 @@ class ProductsLayout extends Component {
                           {productsList.name}
                         </h3>
                         <span className="productsList__price">
-                          {productsList.price}
+                          {productsList.price} грн.
                         </span>
-                        <button className="productsList__add">+</button>
+                        <NavLink
+                          to={`/shop/product/${productsList._id}`} 
+                          className="productsList__add">
+                          <i className="material-icons">add</i>
+                        </NavLink>
                       </div>
                     </div>
-                  ) : null;
+                  
                 })
-              : null}
+              }
           </div>
         </div>
       </section>
@@ -47,7 +55,6 @@ class ProductsLayout extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE", state);
   return {
     products: state.productsReducer
   };
@@ -56,8 +63,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGetProductsByCategory: categoryId =>
-      dispatch(actions.fetchByCategory(categoryId)),
-    onGetAllProducts: () => dispatch(actions.fetchAll())
+      dispatch(actions.fetchByCategory(categoryId)),/* 
+    onGetAllProducts: () => dispatch(actions.fetchAll()) */
   };
 };
 
