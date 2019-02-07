@@ -16,10 +16,11 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        {window.location.pathname.includes('admin') ? (
+        {window.location.pathname.includes("admin") ? (
           <AdminSidebar />
-        )  :    <Header />
-        }
+        ) : (
+          <Header />
+        )}
         <Layout>
           <Switch>
             <Route path="/admin/login" component={AdminLogin} />
@@ -28,7 +29,7 @@ class App extends Component {
             <Route path="/admin" exact component={Admin} />
             <Route path="/about" component={AboutPage} />
             <Route path="/blog" component={BlogPage} />
-            <Route path='/shop/product/:id' component={Product} />
+            <Route path="/shop/:categoryId/:id" component={Product} />
             <Route path="/shop" component={ShopPage} />
             <Route path="/" exact component={MainPage} />
             <Route

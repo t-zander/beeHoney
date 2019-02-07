@@ -16,6 +16,7 @@ class ProductsContainer extends Component {
   };
 
   render() {
+    console.log(this.props.products);
     return (
       <div className="productsContainer">
         {this.props.products.map(product => (
