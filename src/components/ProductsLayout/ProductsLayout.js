@@ -35,9 +35,7 @@ class ProductsLayout extends Component {
                       {productsList.price} грн.
                     </span>
                     <NavLink
-                      to={`/shop/${productsList.categoryId}/${
-                        productsList._id
-                      }`}
+                      to={`/shop/product/${ productsList._id}`}
                       className="productsList__add"
                     >
                       <i className="material-icons">add</i>

@@ -28,7 +28,7 @@ class Shop extends Component {
   render() {
     const { categories } = this.props;
     return (
-      <div className="shop">
+      <section className="shop under-header">
         <div className="shop__mainContent">
           <div className="shop__chooseCateg">
             <h3 className="shop__title">Наша продукция</h3>
@@ -79,7 +79,7 @@ class Shop extends Component {
           <ProductsSidebar />
         </div> */}
         </div>
-      </div>
+      </section>
     );
   }
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const MainPage = props => {
   return (
-    <div className="mainPage">
+    <div className="mainPage under-header">
       <div className="mainPage__wrapper">
         <video autoPlay muted loop className="mainPage__video">
           <source src={beeMovie} type="video/mp4" />
