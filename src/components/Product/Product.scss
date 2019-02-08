@@ -1,3 +1,118 @@
-.product{
+.panel{
+  z-index: 1;
+  font-size: 22px;
+  width: 400px;
+}
+$panel-negative-margin: -120px;
+$gold: #ffb400;
+$green: #05c26c;
 
+.product{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ecebe9;
+  padding: 10px 40px;
+  box-sizing: border-box;
+  margin-top: 82.64px;
+  height: 100%;
+  width: 100%;
+
+  &__leftPanel{
+    @extend .panel;
+    margin-right: $panel-negative-margin;
+  }
+  &__discount{
+    font-size: 55px;
+    font-weight: bold;
+    color: $gold;
+    margin-bottom: 36px;
+    text-align: end;
+  }
+  &__description{
+    font-size: 22px;
+    font-family: "Ubuntu"/*, sans-serif*/;
+  }
+  &__image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 12px 10px rgba(230,229,228,1);
+    background: #ffffff;
+    border-radius: 50%;
+    height: 700px;
+    width: 700px;
+  }
+  &__portionWrapper{
+    display: flex;
+  }
+  &__portion{
+    margin-top: 50px;
+    padding: 0 10px;
+    font-size: 24px;
+    transition: color 0.4s;
+    border-bottom: 1px solid transparent;
+    &:hover{
+      color: $gold;
+      cursor: pointer;
+    }
+  }
+  &__rightPanel{
+    @extend .panel;
+    margin-left: $panel-negative-margin;
+  }
+  &__name{
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
+  &__priceWrapper{
+    display: flex;
+    margin-bottom: 50px;
+    align-items: center;
+  }
+  &__currentPrice{
+    color: $gold;
+    font-weight: bold;
+    margin-right: 38px;
+    font-size: 40px;
+  }
+  &__oldPrice{
+    color: #bab5a8;
+    text-decoration: line-through;
+    font-size: 35px;
+  }
+  &__add{
+    box-sizing: border-box;
+    padding: 14px 65px;
+    background: transparent;
+    border: 2px solid $green;
+    border-radius: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+
+    &:hover{
+      border: 2px solid transparent;
+      background: linear-gradient(to right, #30a06e, #02b521);
+    }
+    i{
+      font-size: 25px;
+      color: $green;
+      background: transparent;
+      font-weight: 300;
+    }
+    &:hover i {
+      color: #fff;
+    }
+  }
+}
+
+.selectedPortion{
+  color: $green;
+  border-bottom: 1px solid $green;
 }
