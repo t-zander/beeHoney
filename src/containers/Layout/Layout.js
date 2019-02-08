@@ -4,7 +4,8 @@ const layout = props => {
   return (
     <main
       style={
-        window.location.pathname === "/" || window.location.pathname.includes('/shop')
+        window.location.pathname === "/" ||
+        window.location.pathname.includes("/shop")
           ? {
               position: "absolute",
               top: 0,
@@ -12,6 +13,10 @@ const layout = props => {
               width: "100%",
               height: "100%",
               zIndex: 10
+            }
+          : window.location.pathname.includes("/product")
+          ? {
+              position: "relative !important"
             }
           : null
       }
