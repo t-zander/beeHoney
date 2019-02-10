@@ -5,12 +5,22 @@ import config from "../../config.json";
 export const fetchAll = () => {
   return dispatch => {
     dispatch(fetchStart());
-    return axios.get(`${config.serverUrl}products`).then(response => {
-      dispatch(fetchSuccess(response.data));
-    });
+    return axios.get(`${config.serverUrl}products`)
+      .then(response => {
+        dispatch(fetchSuccess(response.data));
+      });
   };
 };
 
+export const fetchById = (productId) => {
+  return dispatch => {
+    dispatch(fetchStart());
+    return axios.get(`${config.serverUrl}products/${productId}`)
+      .then(response => {
+        dispatch(fetchByIdSuccess(response.data));
+      });
+  };
+}
 /* 
   Можно сделать отдельные экшны для выборки по категории
   Можно сделать один экшн selectCategory()
@@ -30,7 +40,6 @@ export const fetchByCategory = categoryId => {
       .get(`${config.serverUrl}products/category/${categoryId}`)
       .then(response => {
         dispatch(fetchSuccess(response.data));
-        console.log("FETCH SUCCESS");
       });
   };
 };
@@ -47,6 +56,13 @@ export const fetchSuccess = data => {
     payload: data
   };
 };
+
+export const fetchByIdSuccess = data => {
+  return {
+    type: actionTypes.FETCH_PRODUCT_BY_ID_SUCCESS,
+    payload: data
+  };
+}
 
 export const onAddProductToCart = productId => {
   return {

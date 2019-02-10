@@ -15,9 +15,9 @@ $green: #05c26c;
   padding: 10px 40px;
   box-sizing: border-box;
   margin-top: 82.64px;
-  height: 100%;
+  height: calc(100vh - 82.64px);
   width: 100%;
-
+  
   &__leftPanel{
     @extend .panel;
     margin-right: $panel-negative-margin;
@@ -32,6 +32,7 @@ $green: #05c26c;
   &__description{
     font-size: 22px;
     font-family: "Ubuntu"/*, sans-serif*/;
+    text-align: end;
   }
   &__image{
     display: flex;
