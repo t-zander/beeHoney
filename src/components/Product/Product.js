@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import canImage from '../../assets/images/can.png'
 import "./Product.scss";
-import {NavLink} from "react-router-dom";
-
+import { connect } from "react-redux";
+import * as actions from "../../actions/products/products";
 class Product extends Component {
+  
   // нужно сделать еще чтоб был разный объем например 300 и 500мл
   // с бэка можно присылать
 
@@ -18,8 +19,14 @@ class Product extends Component {
     })
   };
 
-  render() {
-    return(
+  componentDidMount() {
+    const {id} = this.props.match.params;
+    this.props.onGetProductById(id);
+  }
+  
+  productTemplate() {
+    const {product} = this.props;
+    return (
       <section className="under-header">
         <div className="product">
           <div className="product__leftPanel">
@@ -27,11 +34,7 @@ class Product extends Component {
               - 10 %
             </p>
             <p className="product__description">
-              Обладает характерной горчинкой,
-              которая проявлется через 2-3 минуты.
-              Послевкусие приятное, тёплое, ореховое.
-              Кристаллизуется медленно благодаря
-              высокому содержанию фруктозы.
+              {product.description}
             </p>
           </div>
 
@@ -52,11 +55,11 @@ class Product extends Component {
 
           <div className="product__rightPanel">
             <p className="product__name">
-              Каштановый мёд
+              {product.name}
             </p>
             <div className="product__priceWrapper">
               <p className="product__currentPrice">
-                99 грн
+                {product.price} грн
               </p>
               <p className="product__oldPrice">
                 119 грн
@@ -69,9 +72,36 @@ class Product extends Component {
             </div>
           </div>
         </div>
-    </section>
+      </section>
     );
+  }
+  loadingTemplate = (<h1>Loading...</h1>);
+
+  render() {
+    if(this.props.product) {
+      return this.productTemplate();
+    }else{
+      return this.loadingTemplate;
+    }
   }
 }
 
-export default Product;
+const mapStateToProps = state => {
+  return {
+    product: state.productsReducer.selectedProduct
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onGetProductById: productId =>
+      dispatch(
+        actions.fetchById(productId)
+      )
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Product);

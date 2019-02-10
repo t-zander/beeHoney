@@ -30,16 +30,15 @@ class ProductsLayout extends Component {
                     <img src={productsList.imageUrl} />
                   </div>
                   <div className="productsList__content">
-                    <h3 className="productsList__title">{productsList.name}</h3>
+                    <NavLink className="productsList__link" to={`/shop/product/${ productsList._id}`}>
+                      <h3 className="productsList__title">{productsList.name}</h3>
+                    </NavLink>
                     <span className="productsList__price">
                       {productsList.price} грн.
                     </span>
-                    <NavLink
-                      to={`/shop/product/${ productsList._id}`}
-                      className="productsList__add"
-                    >
+                    <button className="productsList__add">
                       <i className="material-icons">add</i>
-                    </NavLink>
+                    </button>
                   </div>
                 </div>
               );

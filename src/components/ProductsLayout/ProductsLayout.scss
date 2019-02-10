@@ -1,3 +1,5 @@
+$gold: #ffb400;
+
 .productsList {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -27,6 +29,14 @@
     flex-direction: column;
     align-items: center;
   }
+  &__link{
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.4s;
+    &:hover{
+      color: $gold;
+    }
+  }
   &__title {
     font-style: italic;
     margin-bottom: 15px;
@@ -37,7 +47,7 @@
     margin-bottom: 15px;
     font-size: 35px;
     font-weight: 700;
-    color: #ffb400;
+    color: $gold;
   }
   &__add {
     box-sizing: border-box;

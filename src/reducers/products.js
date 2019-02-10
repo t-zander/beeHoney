@@ -4,6 +4,7 @@ import {addProductsToLS} from '../helpers/helpers';
 
 
 const initialState = {
+  selectedProduct: null,
   products: [],
   productsInCart: [],
   loading: false
@@ -24,6 +25,12 @@ const productsReducer = (state = initialState, action) => {
         loading: false
       }
     
+    case actionTypes.FETCH_PRODUCT_BY_ID_SUCCESS:
+      return {
+        ...state,
+        selectedProduct: action.payload
+      }
+
     case actionTypes.ADD_PRODUCT_TO_CART:
       addProductsToLS(action.payload);
       
