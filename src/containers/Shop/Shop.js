@@ -18,13 +18,30 @@ import {
 } from "react-scroll";
 
 class Shop extends Component {
+  constructor(props) {
+    super(props);
+    this.myRef = null;
+  }
+  
   state = {
     transform: null
   };
 
+  onScrollToProducts = () => {
+    console.log('scroll')
+    scroller.scrollTo(
+      'products', 
+      {duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart'
+      }
+    )
+  }
+
   componentDidMount() {
     this.props.getAllCategories();
   }
+
   render() {
     const { categories } = this.props;
     return (
@@ -33,12 +50,21 @@ class Shop extends Component {
           <div className="shop__chooseCateg">
             <h3 className="shop__title">Наша продукция</h3>
             <div className="shop__nav">
+                <NavLink
+                  onClick={this.onScrollToProducts}
+                  exact
+                  to='/shop'
+                  activeClassName="shop__active"
+                  >
+                  Все продукты
+                </NavLink>
               {categories
                 ? categories.map(category => (
                     <NavLink
                       exact
                       key={category._id}
                       to={`/shop/${category._id}`}
+                      onClick={this.onScrollToProducts}
                       activeClassName="shop__active"
                     >
                       {category.name}
@@ -68,9 +94,8 @@ class Shop extends Component {
         <NavLink>Другое</NavLink> */}
 
           <Route
-            path="/shop/:categoryId"
+            path="/shop/:categoryId?"
             component={ProductsLayout}
-            test={"test"}
           />
           {/*  <div className="shop__products">
           <ProductsContainer />
@@ -78,6 +103,9 @@ class Shop extends Component {
         <div className="shop__sidebar">
           <ProductsSidebar />
         </div> */}
+        <div className="shop__arrow" onClick={scroll.scrollToTop}>
+          to top
+        </div>
         </div>
       </section>
     );
