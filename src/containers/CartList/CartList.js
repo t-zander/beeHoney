@@ -5,6 +5,9 @@ import CartProduct from "../../components/CartProduct/CartProduct";
 import "./CartList.scss";
 
 class CartList extends Component {
+  state  = {
+    newAmountValue: ''
+  }
   getTotalPrice = () => {
     return this.props.productsInCart
       .map(product => product.price * product.amount)
@@ -15,6 +18,10 @@ class CartList extends Component {
     this.props.onRemoveFromCart(productId);
   }
 
+  /* changeProductAmount = (a, b) => {
+    console.log(a, b);
+  } */
+
   render() {
     const{productsInCart} = this.props;
     return (
@@ -24,7 +31,12 @@ class CartList extends Component {
         ) : (
           <div className="cart__list">
             {productsInCart.map(product => (
-              <CartProduct key={product._id} product={product} removeFromCart={this.removeFromCart}/>
+              <CartProduct 
+                key={product._id} 
+                product={product} 
+                removeFromCart={this.removeFromCart}
+                changeProductAmount={this.changeProductAmount}
+                />
             ))}
             <div className="cart__footer">
               <p>Всего к оплате: {this.getTotalPrice()} грн</p>

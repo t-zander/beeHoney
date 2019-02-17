@@ -78,7 +78,7 @@ class Header extends React.Component {
         >
           <div className="header__wrapper">
             <div className="header__logo">
-              <NavLink to="/">
+              <NavLink to="/" exact>
                 <img src={logo} alt="logo" className="header__logoImg" />
               </NavLink>
             </div>
@@ -95,8 +95,12 @@ class Header extends React.Component {
                 </NavLink>
               ))}
 
-              <div onClick={this.onToggleCartList} className="header__shop">
-                <i className="material-icons">shopping_cart</i>
+              <div 
+                onClick={this.onToggleCartList} 
+                className="header__shop">
+                <i className={'material-icons ' + (this.state.isCartListShown ? 'active': null)}>
+                  shopping_cart
+                </i>
                 <div className="header__shopCalc">
                   {this.getProductsAmount()}
                 </div>
