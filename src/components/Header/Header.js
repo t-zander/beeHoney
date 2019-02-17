@@ -55,7 +55,7 @@ class Header extends React.Component {
         <header
           className="header"
           style={
-            this.state.windowYPosition > 0
+            this.state.windowYPosition > 0 || this.props.location.pathname.includes("product")
               ? {
                   background: "#404040",
                   position: "fixed",

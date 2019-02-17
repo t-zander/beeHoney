@@ -17,29 +17,51 @@ import {
   scroller
 } from "react-scroll";
 
+
 class Shop extends Component {
-  constructor(props) {
-    super(props);
-    this.myRef = null;
-  }
-  
+  scrollOptions = {
+    duration: 800,
+    delay: 0,
+    smooth: 'easeInOutQuart'
+  };
+
   state = {
-    transform: null
+    isScrollVisible: false
   };
 
   onScrollToProducts = () => {
-    console.log('scroll')
     scroller.scrollTo(
       'products', 
-      {duration: 800,
-        delay: 0,
-        smooth: 'easeInOutQuart'
-      }
-    )
+      this.scrollOptions
+    );
+  }
+
+  onScrollToTop = () => {
+    this.setState({
+      isScrollVisible: false
+    });
+    scroll.scrollToTop(this.scrollOptions);
+  }
+
+  handleScroll = () => {
+    if(window.scrollY > 600) {
+      this.setState({
+        isScrollVisible: true
+      })
+    }else{
+      this.setState({
+        isScrollVisible: false
+      })
+    }
   }
 
   componentDidMount() {
     this.props.getAllCategories();
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   render() {
@@ -87,7 +109,7 @@ class Shop extends Component {
             </Link>
           </div>
         </div>
-        <div id="products">
+        <div id="products" className="products">
           {/* <NavLink>Все товары</NavLink> */}
 
           {/* <NavLink>Ульи</NavLink>
@@ -103,9 +125,12 @@ class Shop extends Component {
         <div className="shop__sidebar">
           <ProductsSidebar />
         </div> */}
-        <div className="shop__arrow" onClick={scroll.scrollToTop}>
-          to top
-        </div>
+          <div 
+            className={'products__topArrow ' + (!this.state.isScrollVisible ? 'hidden' : null)}
+            onClick={this.onScrollToTop}
+            >
+            <i className="fas fa-angle-up"></i>
+          </div>
         </div>
       </section>
     );
