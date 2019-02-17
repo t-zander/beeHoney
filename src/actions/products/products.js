@@ -21,18 +21,7 @@ export const fetchById = (productId) => {
       });
   };
 }
-/* 
-  Можно сделать отдельные экшны для выборки по категории
-  Можно сделать один экшн selectCategory()
-  и вызывать его на 21 строке перед "fetchSuccess(response.data)"
-  Таким образом:
-  - юзер выбирает категорию
-  - вызываем "fetchByCategory"
-  - отправляем запрос к бэку
-  - приходит успешный ответ
-  - в сторе меняем выбранную категорию (нужно подумать надо ли нам это)
-  - диспатчим экшн "fetchSuccess"
-*/
+
 export const fetchByCategory = categoryId => {
   return dispatch => {
     dispatch(fetchStart());
@@ -64,9 +53,9 @@ export const fetchByIdSuccess = data => {
   };
 }
 
-export const onAddProductToCart = productId => {
+export const onAddProductToCart = product => {
   return {
     type: actionTypes.ADD_PRODUCT_TO_CART,
-    payload: productId
+    payload: product
   };
 };

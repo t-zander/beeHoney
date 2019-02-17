@@ -6,6 +6,15 @@ import { NavLink } from "react-router-dom";
 
 class ProductsLayout extends Component {
   
+  componentDidMount() {
+    this.getProducts();
+  }
+
+  componentDidUpdate(prev) {
+    if (this.props.match.params.categoryId !== prev.match.params.categoryId) {
+      this.getProducts();
+    }
+  }
 
   getProducts = () => {
     const {categoryId} = this.props.match.params;
@@ -16,14 +25,8 @@ class ProductsLayout extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getProducts();
-  }
-
-  componentDidUpdate(prev) {
-    if (this.props.match.params.categoryId !== prev.match.params.categoryId) {
-      this.getProducts();
-    }
+  onAddToCart = (product) => {
+    this.props.onAddToCart(product);
   }
 
   render() {
@@ -35,20 +38,20 @@ class ProductsLayout extends Component {
         <section className="productsList">
           <div className="wrapper">
             <div className="productsList__list">
-              {products.map(productsList => {
+              {products.map(product => {
                 return (
-                  <div key={productsList._id} className="productsList__product">
+                  <div key={product._id} className="productsList__product">
                     <div className="productsList__image">
-                      <img src={productsList.imageUrl} />
+                      <img src={product.imageUrl} />
                     </div>
                     <div className="productsList__content">
-                      <NavLink className="productsList__link" to={`/shop/product/${ productsList._id}`}>
-                        <h3 className="productsList__title">{productsList.name}</h3>
+                      <NavLink className="productsList__link" to={`/shop/product/${ product._id}`}>
+                        <h3 className="productsList__title">{product.name}</h3>
                       </NavLink>
                       <span className="productsList__price">
-                        {productsList.price} грн.
+                        {product.price} грн.
                       </span>
-                      <button className="productsList__add">
+                      <button className="productsList__add" onClick={() => this.onAddToCart(product)}>
                         <i className="material-icons">add</i>
                       </button>
                     </div>
@@ -71,11 +74,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetProductsByCategory: categoryId =>
-      dispatch(
-        actions.fetchByCategory(categoryId)
-      ),
-    onGetAllProducts: () => dispatch(actions.fetchAll())
+    onGetProductsByCategory: categoryId => dispatch(actions.fetchByCategory(categoryId)),
+    onGetAllProducts: () => dispatch(actions.fetchAll()),
+    onAddToCart: (product) => dispatch(actions.onAddProductToCart(product))
   };
 };
 
