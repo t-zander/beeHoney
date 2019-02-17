@@ -36,7 +36,7 @@ class Product extends Component {
       <section className="under-header">
         <div className="product">
           <NavLink className="product__goBackLink" to={`/shop/${product.categoryId}`}>
-            К списку продуктов
+            к списку продуктов
           </NavLink>
           <div className="product__leftPanel">
             <p className="product__discount">

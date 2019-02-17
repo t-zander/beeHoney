@@ -36,6 +36,17 @@ class Header extends React.Component {
     }
   ];
 
+  getProductsAmount = () => {
+    const {productsInCart} = this.props;
+    if(productsInCart.length > 0) {
+      return productsInCart
+              .map(product => product.amount)
+              .reduce( (current, next) => current + next);
+    }else{
+      return 0;
+    }
+  }
+
   onToggleCartList = () => {
     // открыть модальное окно со списком товаров
     // вывести товары, общую стоимость, кнопку оформить заказ
@@ -87,7 +98,7 @@ class Header extends React.Component {
               <div onClick={this.onToggleCartList} className="header__shop">
                 <i className="material-icons">shopping_cart</i>
                 <div className="header__shopCalc">
-                  {this.props.productsInCart.length}
+                  {this.getProductsAmount()}
                 </div>
               </div>
             </nav>

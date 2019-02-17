@@ -1,29 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getProductsInCart } from "../../reducers/products";
+import * as actions from '../../actions/products/products';
 import CartProduct from "../../components/CartProduct/CartProduct";
 import "./CartList.scss";
 
 class CartList extends Component {
-  products = this.props.products;
-
   getTotalPrice = () => {
-    const totalPriceArray = this.products.map(product => product.price);
-    const totalPrice = totalPriceArray.reduce(
-      (current, next) => current + next
-    );
-    return totalPrice;
+    return this.props.productsInCart
+      .map(product => product.price * product.amount)
+      .reduce( (current, next) => current + next)
   };
 
+  removeFromCart = (productId) => {
+    this.props.onRemoveFromCart(productId);
+  }
+
   render() {
+    const{productsInCart} = this.props;
     return (
       <div className="cart">
-        {this.products.length === 0 ? (
+        {productsInCart.length === 0 ? (
           <p className="cart__empty">Корзина пуста...</p>
         ) : (
-          <div>
-            {this.products.map(product => (
-              <CartProduct key={product._id} product={product} />
+          <div className="cart__list">
+            {productsInCart.map(product => (
+              <CartProduct key={product._id} product={product} removeFromCart={this.removeFromCart}/>
             ))}
             <div className="cart__footer">
               <p>Всего к оплате: {this.getTotalPrice()} грн</p>
@@ -36,12 +37,16 @@ class CartList extends Component {
   }
 }
 
-const mapDispatchToProps = () => {};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRemoveFromCart: (productId) => dispatch(actions.removeProductFromCart(productId))
+  }
+};
 
 const mapStateToProps = state => {
   return {
-    products: getProductsInCart(state.productsReducer)
+    productsInCart: state.productsReducer.productsInCart
   };
 };
 
-export default connect(mapStateToProps)(CartList);
+export default connect(mapStateToProps, mapDispatchToProps)(CartList);

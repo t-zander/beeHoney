@@ -59,3 +59,10 @@ export const onAddProductToCart = product => {
     payload: product
   };
 };
+
+export const removeProductFromCart = (productId) => {
+  return {
+    type: actionTypes.REMOVE_PRODUCT_FROM_CART,
+    payload: productId
+  };
+}

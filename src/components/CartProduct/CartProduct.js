@@ -3,14 +3,26 @@ import "../../containers/CartList/CartList";
 
 const CartProduct = props => {
   const { product } = props;
-  console.log(product);
   return (
     <div className="cart__item">
-      <img src={product.imageUrl} alt="" />
-      <div className="cart__item__header">
-        <h3>{product.name}</h3>
-        <h4>Количество:</h4>
+      <div className="cart__leftPanel">
+        <img src={product.imageUrl} alt=""/>
       </div>
+      <div className="cart__rightPanel">
+        <div className="cart__header">
+          <i 
+            className="far fa-times-circle cart__removeItem" 
+            onClick={() => props.removeFromCart(product._id)}
+            >
+          </i> 
+          <h3>{product.name}</h3>
+        </div>
+        <div className="cart__itemDetails">
+          <h4>Количество: {product.amount} шт</h4>
+          <p>Цена за шт. {product.price} грн</p>
+        </div>
+      </div>
+      
     </div>
   );
 };
