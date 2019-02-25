@@ -36,6 +36,17 @@ class Header extends React.Component {
     }
   ];
 
+  getProductsAmount = () => {
+    const {productsInCart} = this.props;
+    if(productsInCart.length > 0) {
+      return productsInCart
+              .map(product => product.amount)
+              .reduce( (current, next) => current + next);
+    }else{
+      return 0;
+    }
+  }
+
   onToggleCartList = () => {
     // открыть модальное окно со списком товаров
     // вывести товары, общую стоимость, кнопку оформить заказ
@@ -55,7 +66,7 @@ class Header extends React.Component {
         <header
           className="header"
           style={
-            this.state.windowYPosition > 0
+            this.state.windowYPosition > 0 || this.props.location.pathname.includes("product")
               ? {
                   background: "#404040",
                   position: "fixed",
@@ -67,7 +78,7 @@ class Header extends React.Component {
         >
           <div className="header__wrapper">
             <div className="header__logo">
-              <NavLink to="/">
+              <NavLink to="/" exact>
                 <img src={logo} alt="logo" className="header__logoImg" />
               </NavLink>
             </div>
@@ -84,10 +95,14 @@ class Header extends React.Component {
                 </NavLink>
               ))}
 
-              <div onClick={this.onToggleCartList} className="header__shop">
-                <i className="material-icons">shopping_cart</i>
+              <div 
+                onClick={this.onToggleCartList} 
+                className="header__shop">
+                <i className={'material-icons ' + (this.state.isCartListShown ? 'active': null)}>
+                  shopping_cart
+                </i>
                 <div className="header__shopCalc">
-                  {this.props.productsInCart.length}
+                  {this.getProductsAmount()}
                 </div>
               </div>
             </nav>

@@ -89,4 +89,27 @@
       bottom: 120px;
     }
   }
+ 
+}
+
+.products{
+  position: relative;
+
+  &__topArrow{
+    position: fixed;
+    font-size: 60px;
+    bottom: 50px;
+    right: 50px;
+    color: #ffb400;
+    transition: all 0.4s;
+    
+    &:hover{
+      bottom: 58px;
+      cursor: pointer;
+    }
+  }
+}
+
+.hidden{
+  display: none;
 }

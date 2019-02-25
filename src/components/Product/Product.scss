@@ -17,7 +17,20 @@ $green: #05c26c;
   margin-top: 82.64px;
   height: calc(100vh - 82.64px);
   width: 100%;
-  
+
+  &__goBackLink{
+    position: absolute;
+    font-size: 22px;
+    right: 0;
+    top: 100px;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.4s;
+
+    &:hover{
+      color: $gold;
+    }
+  }
   &__leftPanel{
     @extend .panel;
     margin-right: $panel-negative-margin;

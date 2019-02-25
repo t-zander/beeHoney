@@ -33,12 +33,37 @@ const productsReducer = (state = initialState, action) => {
 
     case actionTypes.ADD_PRODUCT_TO_CART:
       addProductsToLS(action.payload);
+      const {_id} = action.payload;
+      const amount = state.productsInCart.filter(product => product._id === _id).length;
+      const productWithAmount = {
+        ...action.payload,
+        amount: amount + 1
+      };
+
+      if(amount){
+        const productsInCart = [...state.productsInCart];
+        const product = productsInCart.find(product => product._id === _id);
+        product.amount += 1;
+        return {
+          ...state,
+          productsInCart: productsInCart
+        }
+      }else{
+        return {
+          ...state,
+          productsInCart: [
+            ...state.productsInCart, 
+            productWithAmount
+          ]
+        }
+      }
       
+    case actionTypes.REMOVE_PRODUCT_FROM_CART:
       return {
         ...state,
-        productsInCart: [...state.productsInCart, action.payload]
+        productsInCart: state.productsInCart.filter(product => product._id !== action.payload)
       }
-
+    
     default:
       return state;
   }

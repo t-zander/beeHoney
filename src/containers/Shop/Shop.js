@@ -17,14 +17,53 @@ import {
   scroller
 } from "react-scroll";
 
+
 class Shop extends Component {
-  state = {
-    transform: null
+  scrollOptions = {
+    duration: 800,
+    delay: 0,
+    smooth: 'easeInOutQuart'
   };
+
+  state = {
+    isScrollVisible: false
+  };
+
+  onScrollToProducts = () => {
+    scroller.scrollTo(
+      'products', 
+      this.scrollOptions
+    );
+  }
+
+  onScrollToTop = () => {
+    this.setState({
+      isScrollVisible: false
+    });
+    scroll.scrollToTop(this.scrollOptions);
+  }
+
+  handleScroll = () => {
+    if(window.scrollY > 600) {
+      this.setState({
+        isScrollVisible: true
+      })
+    }else{
+      this.setState({
+        isScrollVisible: false
+      })
+    }
+  }
 
   componentDidMount() {
     this.props.getAllCategories();
+    window.addEventListener('scroll', this.handleScroll);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   render() {
     const { categories } = this.props;
     return (
@@ -33,12 +72,21 @@ class Shop extends Component {
           <div className="shop__chooseCateg">
             <h3 className="shop__title">Наша продукция</h3>
             <div className="shop__nav">
+                <NavLink
+                  onClick={this.onScrollToProducts}
+                  exact
+                  to='/shop'
+                  activeClassName="shop__active"
+                  >
+                  Все продукты
+                </NavLink>
               {categories
                 ? categories.map(category => (
                     <NavLink
                       exact
                       key={category._id}
                       to={`/shop/${category._id}`}
+                      onClick={this.onScrollToProducts}
                       activeClassName="shop__active"
                     >
                       {category.name}
@@ -61,16 +109,15 @@ class Shop extends Component {
             </Link>
           </div>
         </div>
-        <div id="products">
+        <div id="products" className="products">
           {/* <NavLink>Все товары</NavLink> */}
 
           {/* <NavLink>Ульи</NavLink>
         <NavLink>Другое</NavLink> */}
 
           <Route
-            path="/shop/:categoryId"
+            path="/shop/:categoryId?"
             component={ProductsLayout}
-            test={"test"}
           />
           {/*  <div className="shop__products">
           <ProductsContainer />
@@ -78,6 +125,12 @@ class Shop extends Component {
         <div className="shop__sidebar">
           <ProductsSidebar />
         </div> */}
+          <div 
+            className={'products__topArrow ' + (!this.state.isScrollVisible ? 'hidden' : null)}
+            onClick={this.onScrollToTop}
+            >
+            <i className="fas fa-angle-up"></i>
+          </div>
         </div>
       </section>
     );
