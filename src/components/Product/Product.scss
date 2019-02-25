@@ -1,22 +1,25 @@
 .panel{
   z-index: 1;
-  font-size: 22px;
-  width: 400px;
+  font-size: 22px;/* 
+  width: 400px; */
 }
 $panel-negative-margin: -120px;
 $gold: #ffb400;
 $green: #05c26c;
 
+
 .product{
+  
   display: flex;
+  padding: 130px 0;
   align-items: center;
   justify-content: center;
   background: #ecebe9;
+ /*  
+  
+  
   padding: 10px 40px;
-  box-sizing: border-box;
-  margin-top: 82.64px;
-  height: calc(100vh - 82.64px);
-  width: 100%;
+  box-sizing: border-box;*/
 
   &__goBackLink{
     position: absolute;
@@ -48,7 +51,8 @@ $green: #05c26c;
     text-align: end;
   }
   &__image{
-    display: flex;
+    
+    /* display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -56,7 +60,15 @@ $green: #05c26c;
     background: #ffffff;
     border-radius: 50%;
     height: 700px;
-    width: 700px;
+    width: 700px; */
+    img{
+      background: #fff;
+      width: 700px; 
+      height: 700px;
+      object-fit: scale-down;
+      padding: 100px;
+      border-radius: 50%;
+    }
   }
   &__portionWrapper{
     display: flex;

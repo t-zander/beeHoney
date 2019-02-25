@@ -27,7 +27,7 @@ const MainPage = props => {
             </button>
 
             <Link to="/about" className="mainPage__aboutLink">
-              <i className="material-icons add">add</i>
+            <i className="fas fa-question add"></i>
               <span className="details">Подробнее о продуктах</span>
             </Link>
           </div>

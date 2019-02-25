@@ -37,9 +37,9 @@ class Shop extends Component {
   }
 
   onScrollToTop = () => {
-    this.setState({
-      isScrollVisible: false
-    });
+    /* this.setState({
+      isScrollVisible: true
+    }); */
     scroll.scrollToTop(this.scrollOptions);
   }
 
@@ -126,8 +126,8 @@ class Shop extends Component {
           <ProductsSidebar />
         </div> */}
           <div 
-            className={'products__topArrow ' + (!this.state.isScrollVisible ? 'hidden' : null)}
-            onClick={this.onScrollToTop}
+            className={(!this.state.isScrollVisible ? 'products__topArrow hidden' : 'products__topArrow')}
+            onClick={() => scroll.scrollToTop(this.scrollOptions)}
             >
             <i className="fas fa-angle-up"></i>
           </div>

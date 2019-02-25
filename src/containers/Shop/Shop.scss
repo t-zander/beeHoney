@@ -80,13 +80,13 @@
   &__arrow{
     position: absolute;
     z-index: 200;
-    bottom: 128px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     transition: all 0.4s;
     cursor: pointer;
     &:hover{
-      bottom: 120px;
+      bottom: 45px;
     }
   }
  
@@ -101,8 +101,7 @@
     bottom: 50px;
     right: 50px;
     color: #ffb400;
-    transition: all 0.4s;
-    
+    transition: bottom 0.4s;
     &:hover{
       bottom: 58px;
       cursor: pointer;
@@ -111,5 +110,61 @@
 }
 
 .hidden{
-  display: none;
+  visibility: hidden !important;
+}
+
+@media (max-width: 575.98px) {
+  .shop{
+    &__title{
+      font-size: 45px;
+      text-align: center;
+    }
+   
+  }
+  .products{
+    &__topArrow{
+      background: #ffb400;
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: 30px;
+      right: 30px;
+      transform: none;
+      transition: none;
+      -webkit-box-shadow: 0px 5px 25px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 5px 25px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 5px 25px 0px rgba(0,0,0,0.75);
+
+      &:hover{
+        bottom: 30px;
+      }
+    }
+    .hidden{
+      visibility: hidden;
+    }
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+ 
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+
+@media (min-width: 1200px) { 
+
 }
