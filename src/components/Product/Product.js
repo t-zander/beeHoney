@@ -34,22 +34,43 @@ class Product extends Component {
     const {product} = this.props;
     return (
       <section className="under-header">
-        <div className="product">
-          <NavLink className="product__goBackLink" to={`/shop/${product.categoryId}`}>
+      {/* <NavLink className="product__goBackLink" to={`/shop/${product.categoryId}`}>
             к списку продуктов
-          </NavLink>
-          <div className="product__leftPanel">
-            <p className="product__discount">
-              - 10 %
-            </p>
-            <p className="product__description">
-              {product.description}
-            </p>
-          </div>
+      </NavLink> */}
+       
+        <div className='product'>
+          <div className='product__container'>
+            <div className="product__leftPanel">
+              <p className="product__discount">
+                - 10 %
+              </p>
+              <p className="product__description">
+                {product.description}
+              </p>
+            </div>
 
-          <div className="product__image">
-            <img src={canImage} alt=""/>
-            <br/>
+            <div className="product__image">
+              <img src='http://24medok.ru/wp-content/uploads/81326863_1.jpg' alt=""/>
+            </div>
+
+            <div className="product__rightPanel">
+              <p className="product__name">
+                {product.name}
+              </p>
+              <div className="product__priceWrapper">
+                <p className="product__currentPrice">
+                  {product.price} грн
+                </p>
+                <p className="product__oldPrice">
+                  119 грн
+                </p>
+              </div>
+              <div className="product__actions">
+                <button className="product__add" onClick={() => this.onAddToCart(product)}>
+                  <i className="material-icons">add</i>
+                </button>
+              </div>
+            </div>
             <div className="product__portionWrapper">
               {this.state.portions.map( (portion, index) =>
                 (<p
@@ -59,25 +80,6 @@ class Product extends Component {
                   {portion} мл
                 </p>)
               )}
-            </div>
-          </div>
-
-          <div className="product__rightPanel">
-            <p className="product__name">
-              {product.name}
-            </p>
-            <div className="product__priceWrapper">
-              <p className="product__currentPrice">
-                {product.price} грн
-              </p>
-              <p className="product__oldPrice">
-                119 грн
-              </p>
-            </div>
-            <div className="product__actions">
-              <button className="product__add" onClick={() => this.onAddToCart(product)}>
-                <i className="material-icons">add</i>
-              </button>
             </div>
           </div>
         </div>

@@ -1,25 +1,25 @@
 .panel{
   z-index: 1;
-  font-size: 22px;/* 
-  width: 400px; */
+  font-size: 22px;
+  position: absolute;
+  transform: translateY(-50%) !important;
+  
 }
-$panel-negative-margin: -120px;
+
 $gold: #ffb400;
 $green: #05c26c;
 
 
 .product{
-  
+  height: 100%;
   display: flex;
-  padding: 130px 0;
   align-items: center;
   justify-content: center;
-  background: #ecebe9;
- /*  
-  
-  
-  padding: 10px 40px;
-  box-sizing: border-box;*/
+  padding-top: 82px;
+  box-sizing: border-box;
+  &__container{
+    position: relative;
+  }
 
   &__goBackLink{
     position: absolute;
@@ -36,13 +36,14 @@ $green: #05c26c;
   }
   &__leftPanel{
     @extend .panel;
-    margin-right: $panel-negative-margin;
+    top: 50%;
+    left: -120px;
   }
   &__discount{
-    font-size: 55px;
+    font-size: 35px;
     font-weight: bold;
     color: $gold;
-    margin-bottom: 36px;
+    margin-bottom: 20px;
     text-align: end;
   }
   &__description{
@@ -51,32 +52,25 @@ $green: #05c26c;
     text-align: end;
   }
   &__image{
-    
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 0 0 12px 10px rgba(230,229,228,1);
-    background: #ffffff;
-    border-radius: 50%;
-    height: 700px;
-    width: 700px; */
     img{
-      background: #fff;
-      width: 700px; 
-      height: 700px;
+      width: 100%;
+      max-width: 450px; 
+      height: auto;
       object-fit: scale-down;
-      padding: 100px;
       border-radius: 50%;
+      background: #fff;
     }
   }
   &__portionWrapper{
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
     display: flex;
+    transform: translateX(-50%);
   }
   &__portion{
-    margin-top: 50px;
     padding: 0 10px;
-    font-size: 24px;
+    font-size: 20px;
     transition: color 0.4s;
     border-bottom: 1px solid transparent;
     &:hover{
@@ -86,32 +80,34 @@ $green: #05c26c;
   }
   &__rightPanel{
     @extend .panel;
-    margin-left: $panel-negative-margin;
+    top: 50%;
+    right: -190px;
+    width: 100%;
+    max-width: 265px;
   }
   &__name{
-    font-size: 55px;
+    font-size: 35px;
     font-weight: bold;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
   &__priceWrapper{
     display: flex;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     align-items: center;
   }
   &__currentPrice{
     color: $gold;
     font-weight: bold;
-    margin-right: 38px;
-    font-size: 40px;
+    font-size: 35px;
   }
   &__oldPrice{
     color: #bab5a8;
     text-decoration: line-through;
-    font-size: 35px;
+    font-size: 30px;
   }
   &__add{
     box-sizing: border-box;
-    padding: 14px 65px;
+    padding: 14px 55px;
     background: transparent;
     border: 2px solid $green;
     border-radius: 50px;
@@ -141,4 +137,114 @@ $green: #05c26c;
 .selectedPortion{
   color: $green;
   border-bottom: 1px solid $green;
+}
+
+@media (max-width: 575.98px) {
+  .product{
+    &__portionWrapper{
+      bottom: unset;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    &__leftPanel{
+      display: none;
+    }
+    &__rightPanel{
+      position: initial;
+      text-align: center;
+      max-width: initial;
+    }
+    &__priceWrapper{
+      justify-content: center;
+    }
+    &__image{
+      margin-bottom: 40px;
+      img{
+        max-width: 380px;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+
+  .product{
+    padding: 0;
+    &__rightPanel{
+      right: -104px;
+      max-width: 184px;
+      width: 100%;
+      top: 29px;
+    }
+    &__name{
+      font-size: 24px;
+    }
+    &__currentPrice{
+      font-size: 24px;
+    }
+    &__oldPrice{
+      font-size: 20px;
+    }
+    &__add{
+      padding: 7px 40px;
+    }
+    &__image{
+      img{
+        max-width: 350px;
+        width: 100%;
+      }
+    }
+    &__description{
+      font-size: 20px;
+    }
+    &__leftPanel{
+      top: 0;
+      left: -59px;
+    }
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .product{
+    &__rightPanel{
+      right: -175px;
+      max-width: 200px;
+      width: 100%;
+    }
+    &__name{
+      font-size: 24px;
+    }
+    &__currentPrice{
+      font-size: 24px;
+    }
+    &__oldPrice{
+      font-size: 20px;
+    }
+    &__add{
+      padding: 7px 40px;
+    }
+    &__image{
+      img{
+        max-width: 400px;
+        width: 100%;
+      }
+    }
+    &__description{
+      font-size: 20px;
+    }
+  }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+
+@media (min-width: 1200px) { 
+
 }
