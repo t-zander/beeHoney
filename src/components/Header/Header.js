@@ -62,55 +62,50 @@ class Header extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <header
-          className="header"
-          style={
-            this.state.windowYPosition > 0 || this.props.location.pathname.includes("product")
-              ? {
-                  background: "#404040",
-                  position: "fixed",
-                  width: "100%",
-                  boxSizing: "border-box"
-                }
-              : { background: "transparent" }
-          }
+      <header
+        className="header"
+        style={
+          this.state.windowYPosition > 0 || this.props.location.pathname.includes("product")
+            ? {
+                background: "#404040",
+                position: "fixed",
+                width: "100%",
+                boxSizing: "border-box"
+              }
+            : { background: "transparent" }
+        }
         >
-          <div className="header__wrapper">
-            <div className="header__logo">
-              <NavLink to="/" exact>
-                <img src={logo} alt="logo" className="header__logoImg" />
-              </NavLink>
-            </div>
-            <nav className="header__navigation">
-              {this.navigationItems.map((item, index) => (
-                <NavLink
-                  key={index}
-                  to={item.path}
-                  exact={item.path === "/" ? true : false}
-                  className="header__navLink"
-                  activeClassName="active"
-                >
-                  {item.text}
-                </NavLink>
-              ))}
-
-              <div 
-                onClick={this.onToggleCartList} 
-                className="header__shop">
-                <i className={'material-icons ' + (this.state.isCartListShown ? 'active': null)}>
-                  shopping_cart
-                </i>
-                <div className="header__shopCalc">
-                  {this.getProductsAmount()}
-                </div>
-              </div>
-            </nav>
+        <div className="header__wrapper">
+          <div className="header__logo">
+            <NavLink to="/" exact>
+              <img src={logo} alt="logo" className="header__logoImg" />
+            </NavLink>
           </div>
-        </header>
+          <nav className="header__navigation">
+            {this.navigationItems.map((item, index) => (
+              <NavLink
+                key={index}
+                to={item.path}
+                exact={item.path === "/" ? true : false}
+                className="header__navLink"
+                activeClassName="active"
+              >
+                {item.text}
+              </NavLink>
+            ))}
 
+            <NavLink className="header__shop" to="/cart">
+              <i className={'material-icons ' + (this.state.isCartListShown ? 'active': null)}>
+                shopping_cart
+              </i>
+              <div className="header__shopCalc">
+                {this.getProductsAmount()}
+              </div>
+            </NavLink>
+          </nav>
+        </div>
         {this.state.isCartListShown && <CartList />}
-      </React.Fragment>
+      </header>
     );
   }
 }

@@ -25,25 +25,69 @@ class CartList extends Component {
   render() {
     const{productsInCart} = this.props;
     return (
-      <div className="cart">
-        {productsInCart.length === 0 ? (
-          <p className="cart__empty">Корзина пуста...</p>
-        ) : (
-          <div className="cart__list">
-            {productsInCart.map(product => (
-              <CartProduct 
-                key={product._id} 
-                product={product} 
-                removeFromCart={this.removeFromCart}
-                changeProductAmount={this.changeProductAmount}
-                />
-            ))}
-            <div className="cart__footer">
-              <p>Всего к оплате: {this.getTotalPrice()} грн</p>
-              <button className="cart__btn">Оформить заказ</button>
+      <div className="cartList">
+        <div className="wrapper">
+          <h2>Корзина</h2>
+          <table className="cartList__table">
+            <thead>
+              <tr className="cartList__tableHeaderRow">
+                <th>Продукт</th>
+                <th>Описание</th>
+                <th>Объем</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {productsInCart.map(product => {
+                return (
+                  <tr key={product._id} className="cartList__tableRow">
+                    <td>
+                      <div className="cartList__imageContainer">
+                        <img src={product.imageUrl} alt="product"/>
+                      </div>
+                    </td>
+                    <td>{product.description}</td>
+                    <td>Объем</td>
+                    <td className="cartList__amount">
+                      <i className="fas fa-angle-left cartList__amountControls"></i>
+                      {product.amount}
+                      <i className="fas fa-angle-right cartList__amountControls"></i>
+                    </td>
+                    <td>{product.price}</td>
+                    <td>X</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+
+          <div className="cartList__priceControls">
+            <div className="cartList__priceControlsContainer">
+              <div className="cartList__price">
+                <div className="cartList__top">
+                  <p>Продукты:</p>
+                  <p>{this.getTotalPrice()} грн</p>
+                </div>
+                <div className="cartList__bottom">
+                  <p>Доставка:</p>
+                  <p>50 грн</p>
+                </div>
+              </div>
+              
+              <div className="cartList__totalPrice">
+                <h2>Итого:</h2>
+              </div>
+              <div className='cartList__btnContainer'>
+                <button className="cartList__add">
+                  Продолжить
+                </button>
+              </div>
+              
             </div>
           </div>
-        )}
+        </div>
       </div>
     );
   }

@@ -6,7 +6,26 @@ import {addProductsToLS} from '../helpers/helpers';
 const initialState = {
   selectedProduct: null,
   products: [],
-  productsInCart: [],
+  productsInCart: [
+    {
+      _id: 1231,
+      price: 100,
+      name: "Мед подсолнечный",
+      description: "очень вкусный",
+      imageUrl: "http://localhost:8000/images/honey-product.jpg",
+      categoryId: "5c1e4ef9f8a84d0a5438c0be",
+      amount: 1
+    },
+    {
+      _id: 1235,
+      price: 200,
+      name: "Мед майский",
+      description: "очень вкусный",
+      imageUrl: "http://localhost:8000/images/honey-product.jpg",
+      categoryId: "5c1e4ef9f8a84d0a5438c123",
+      amount: 5
+    }
+  ],
   loading: false
 };
 
