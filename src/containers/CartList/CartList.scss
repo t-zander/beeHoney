@@ -42,11 +42,34 @@ $gold: #ffc31e;
   &__top {
     margin-bottom: 10px;
   }
-  &__amount{
-    text-align: center;
+  &__portionContainer{
+    display: flex;
   }
-  &__amountControls{
-    font-size: 24px;
+  &__portion{
+    padding: 0 10px;
+    font-size: 20px;
+    transition: color 0.4s;
+    border-bottom: 1px solid transparent;
+    &:hover{
+      color: $gold;
+      cursor: pointer;
+    }
+  }
+  &__amount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  &__controls{
+    font-size: 30px;
+    margin: 0 5px;
+    transition: color 0.4s;
+
+    &:hover{
+      cursor: pointer;
+      color: #049e59;
+    }
   }
   &__priceControls{
     display: flex;

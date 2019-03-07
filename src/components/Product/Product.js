@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import canImage from '../../assets/images/can.png';
 import "./Product.scss";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 import * as actions from "../../actions/products/products";
 
 class Product extends Component {

@@ -66,3 +66,18 @@ export const removeProductFromCart = (productId) => {
     payload: productId
   };
 }
+
+export const increaseProductAmt = (productId) => {
+  return {
+    type: actionTypes.INCREASE_PRODUCT_AMT,
+    payload: productId
+  };
+}
+
+export const decreaseProductAmt = (productId) => {
+  console.log(productId);
+  return {
+    type: actionTypes.DECREASE_PRODUCT_AMT,
+    payload: productId
+  };
+}
