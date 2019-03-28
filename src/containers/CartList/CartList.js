@@ -1,17 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from '../../actions/products/products';
-import CartProduct from "../../components/CartProduct/CartProduct";
 import "./CartList.scss";
 
 class CartList extends Component {
-  state  = {
-    newAmountValue: ''
-  }
+  state = {
+    selectedPortion: 0,
+    portions: [250, 500]
+  };
+
+  onSelectPortion = (index) => {
+    this.setState({
+      selectedPortion: index
+    })
+  };
+  
   getTotalPrice = () => {
-    return this.props.productsInCart
-      .map(product => product.price * product.amount)
-      .reduce( (current, next) => current + next)
+    if(this.props.productsInCart.length) {
+      return this.props.productsInCart
+        .map(product => product.price * product.amount)
+        .reduce( (current, next) => current + next)
+    }else{
+      return 0;
+    }
   };
 
   removeFromCart = (productId) => {
@@ -49,14 +60,41 @@ class CartList extends Component {
                       </div>
                     </td>
                     <td>{product.description}</td>
-                    <td>Объем</td>
-                    <td className="cartList__amount">
-                      <i className="fas fa-angle-left cartList__amountControls"></i>
-                      {product.amount}
-                      <i className="fas fa-angle-right cartList__amountControls"></i>
+                    <td>
+                      <div className="cartList__portionContainer">
+                        {this.state.portions.map( (portion, index) =>
+                          (<p
+                            onClick={() => this.onSelectPortion(index)}
+                            className={'cartList__portion ' + (this.state.selectedPortion === index ? 'selectedPortion' : '')}
+                            key={index}>
+                            {portion} мл
+                          </p>)
+                        )}
+                      </div>
                     </td>
-                    <td>{product.price}</td>
-                    <td>X</td>
+                    <td>
+                      <div className="cartList__amount">
+                        <i 
+                          className="material-icons cartList__controls" 
+                          onClick={() => this.props.onDecreaseProductAmt(product._id)}>
+                          keyboard_arrow_left
+                        </i>
+                        <p>{product.amount}</p>
+                        <i 
+                          className="material-icons cartList__controls"
+                          onClick={() => this.props.onIncreaseProductAmt(product._id)}>
+                          keyboard_arrow_right
+                        </i>
+                      </div>
+                    </td>
+                    <td>{product.price} грн</td>
+                    <td>
+                      <i 
+                        className="material-icons cartList__controls" 
+                        onClick={() => this.props.onRemoveFromCart(product._id)}>
+                        close
+                      </i>
+                    </td>
                   </tr>
                 )
               })}
@@ -77,7 +115,7 @@ class CartList extends Component {
               </div>
               
               <div className="cartList__totalPrice">
-                <h2>Итого:</h2>
+                <h2>Итого: {this.getTotalPrice() + 50} грн</h2>
               </div>
               <div className='cartList__btnContainer'>
                 <button className="cartList__add">
@@ -95,6 +133,8 @@ class CartList extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onIncreaseProductAmt: (productId) => dispatch(actions.increaseProductAmt(productId)),
+    onDecreaseProductAmt: (productId) => dispatch(actions.decreaseProductAmt(productId)),
     onRemoveFromCart: (productId) => dispatch(actions.removeProductFromCart(productId))
   }
 };

@@ -76,7 +76,35 @@ const productsReducer = (state = initialState, action) => {
           ]
         }
       }
-      
+
+    case actionTypes.INCREASE_PRODUCT_AMT:
+      {
+        const productsInCart = [...state.productsInCart];
+        const product = productsInCart.find(product => product._id === action.payload);
+        product.amount++;
+        return {
+          ...state,
+          productsInCart: productsInCart
+        }
+      }
+
+    case actionTypes.DECREASE_PRODUCT_AMT:
+      {
+        const productsInCart = [...state.productsInCart];
+        const product = productsInCart.find(product => product._id === action.payload);
+        if(product.amount === 1) {
+          return {
+            ...state,
+            productsInCart: state.productsInCart.filter(product => product._id !== action.payload)
+          }
+        }else{
+          product.amount--;
+          return {
+            ...state,
+            productsInCart: productsInCart
+          }
+        }
+      }
     case actionTypes.REMOVE_PRODUCT_FROM_CART:
       return {
         ...state,
