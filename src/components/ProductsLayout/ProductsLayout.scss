@@ -1,10 +1,13 @@
+$gold: #ffb400;
+
 .productsList {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   &__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 15px;
   }
   &__product {
     max-width: 300px;
@@ -27,6 +30,14 @@
     flex-direction: column;
     align-items: center;
   }
+  &__link{
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.4s;
+    &:hover{
+      color: $gold;
+    }
+  }
   &__title {
     font-style: italic;
     margin-bottom: 15px;
@@ -37,7 +48,7 @@
     margin-bottom: 15px;
     font-size: 35px;
     font-weight: 700;
-    color: #ffb400;
+    color: $gold;
   }
   &__add {
     box-sizing: border-box;
@@ -53,19 +64,88 @@
     -o-transition: all 0.5s;
     
     &:hover{
-      border: 2px solid transparent;
-      background: linear-gradient(to right, #30a06e, #02b521);
-    }
-   
+       border: 2px solid transparent;
+       background: linear-gradient(to right, #30a06e, #02b521);
+     }
+
     i{
       font-size: 25px;
       color: #05c26c;
       background: transparent;
       font-weight: 300;
-      
+
     }
     &:hover i {
       color: #fff;
     }
   }
+}
+
+@media (max-width: 575.98px) {
+  .productsList{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    .wrapper{
+      padding: 0;
+    }
+    &__list{
+      justify-content: center;
+    }
+
+    &__image{
+      height: 200px;
+    }
+
+    &__add{
+      padding: 10px 45px;
+    }
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .productsList{
+    .wrapper{
+      width: auto;
+    }
+    &__image{
+      height: 250px;
+    }
+    &__list{
+      justify-content: space-around;
+    }
+
+    &__add{
+      padding: 10px 55px;
+    }
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 980.89px) { 
+  .productsList{
+    .wrapper{
+      width: auto;
+    }
+    &__list{
+      justify-content: space-around;
+    }
+  }
+}
+
+
+@media (min-width: 981px) and (max-width: 1199.98px) { 
+  .productsList{
+    .wrapper{
+      width: auto;
+    }
+    &__list{
+      justify-content: space-between
+    }
+  }
+}
+
+
+@media (min-width: 1200px) { 
+
 }

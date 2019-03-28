@@ -5,24 +5,23 @@ import config from "../../config.json";
 export const fetchAll = () => {
   return dispatch => {
     dispatch(fetchStart());
-    return axios.get(`${config.serverUrl}products`).then(response => {
-      dispatch(fetchSuccess(response.data));
-    });
+    return axios.get(`${config.serverUrl}products`)
+      .then(response => {
+        dispatch(fetchSuccess(response.data));
+      });
   };
 };
 
-/* 
-  Можно сделать отдельные экшны для выборки по категории
-  Можно сделать один экшн selectCategory()
-  и вызывать его на 21 строке перед "fetchSuccess(response.data)"
-  Таким образом:
-  - юзер выбирает категорию
-  - вызываем "fetchByCategory"
-  - отправляем запрос к бэку
-  - приходит успешный ответ
-  - в сторе меняем выбранную категорию (нужно подумать надо ли нам это)
-  - диспатчим экшн "fetchSuccess"
-*/
+export const fetchById = (productId) => {
+  return dispatch => {
+    dispatch(fetchStart());
+    return axios.get(`${config.serverUrl}products/${productId}`)
+      .then(response => {
+        dispatch(fetchByIdSuccess(response.data));
+      });
+  };
+}
+
 export const fetchByCategory = categoryId => {
   return dispatch => {
     dispatch(fetchStart());
@@ -30,7 +29,6 @@ export const fetchByCategory = categoryId => {
       .get(`${config.serverUrl}products/category/${categoryId}`)
       .then(response => {
         dispatch(fetchSuccess(response.data));
-        console.log("FETCH SUCCESS");
       });
   };
 };
@@ -48,9 +46,38 @@ export const fetchSuccess = data => {
   };
 };
 
-export const onAddProductToCart = productId => {
+export const fetchByIdSuccess = data => {
+  return {
+    type: actionTypes.FETCH_PRODUCT_BY_ID_SUCCESS,
+    payload: data
+  };
+}
+
+export const onAddProductToCart = product => {
   return {
     type: actionTypes.ADD_PRODUCT_TO_CART,
-    payload: productId
+    payload: product
   };
 };
+
+export const removeProductFromCart = (productId) => {
+  return {
+    type: actionTypes.REMOVE_PRODUCT_FROM_CART,
+    payload: productId
+  };
+}
+
+export const increaseProductAmt = (productId) => {
+  return {
+    type: actionTypes.INCREASE_PRODUCT_AMT,
+    payload: productId
+  };
+}
+
+export const decreaseProductAmt = (productId) => {
+  console.log(productId);
+  return {
+    type: actionTypes.DECREASE_PRODUCT_AMT,
+    payload: productId
+  };
+}

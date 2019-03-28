@@ -11,6 +11,7 @@ import AdminLogin from "./containers/AdminLogin/AdminLogin";
 import AdminSidebar from "./containers/Admin/AdminSidebar/AdminSidebar";
 import AdminAbout from "./containers/Admin/AdminAbout/AdminAbout";
 import Product from "./components/Product/Product";
+import CartList from "./containers/CartList/CartList";
 
 class App extends Component {
   render() {
@@ -21,7 +22,7 @@ class App extends Component {
         ) : (
           <Header />
         )}
-        <Layout>
+        {/*<Layout>*/}
           <Switch>
             <Route path="/admin/login" component={AdminLogin} />
             <Route path="/admin/orders" component={AdminAbout} />
@@ -29,8 +30,9 @@ class App extends Component {
             <Route path="/admin" exact component={Admin} />
             <Route path="/about" component={AboutPage} />
             <Route path="/blog" component={BlogPage} />
-            <Route path="/shop/:categoryId/:id" component={Product} />
+            <Route path="/shop/product/:id" component={Product} />
             <Route path="/shop" component={ShopPage} />
+            <Route path="/cart" component={CartList} />
             <Route path="/" exact component={MainPage} />
             <Route
               render={() => (
@@ -44,7 +46,7 @@ class App extends Component {
               )}
             />
           </Switch>
-        </Layout>
+        {/*</Layout>*/}
       </React.Fragment>
     );
   }

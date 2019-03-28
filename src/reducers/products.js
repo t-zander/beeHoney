@@ -4,8 +4,28 @@ import {addProductsToLS} from '../helpers/helpers';
 
 
 const initialState = {
+  selectedProduct: null,
   products: [],
-  productsInCart: [],
+  productsInCart: [
+    {
+      _id: 1231,
+      price: 100,
+      name: "Мед подсолнечный",
+      description: "очень вкусный",
+      imageUrl: "http://localhost:8000/images/honey-product.jpg",
+      categoryId: "5c1e4ef9f8a84d0a5438c0be",
+      amount: 1
+    },
+    {
+      _id: 1235,
+      price: 200,
+      name: "Мед майский",
+      description: "очень вкусный",
+      imageUrl: "http://localhost:8000/images/honey-product.jpg",
+      categoryId: "5c1e4ef9f8a84d0a5438c123",
+      amount: 5
+    }
+  ],
   loading: false
 };
 
@@ -24,14 +44,73 @@ const productsReducer = (state = initialState, action) => {
         loading: false
       }
     
-    case actionTypes.ADD_PRODUCT_TO_CART:
-      addProductsToLS(action.payload);
-      
+    case actionTypes.FETCH_PRODUCT_BY_ID_SUCCESS:
       return {
         ...state,
-        productsInCart: [...state.productsInCart, action.payload]
+        selectedProduct: action.payload
       }
 
+    case actionTypes.ADD_PRODUCT_TO_CART:
+      addProductsToLS(action.payload);
+      const {_id} = action.payload;
+      const amount = state.productsInCart.filter(product => product._id === _id).length;
+      const productWithAmount = {
+        ...action.payload,
+        amount: amount + 1
+      };
+
+      if(amount){
+        const productsInCart = [...state.productsInCart];
+        const product = productsInCart.find(product => product._id === _id);
+        product.amount += 1;
+        return {
+          ...state,
+          productsInCart: productsInCart
+        }
+      }else{
+        return {
+          ...state,
+          productsInCart: [
+            ...state.productsInCart, 
+            productWithAmount
+          ]
+        }
+      }
+
+    case actionTypes.INCREASE_PRODUCT_AMT:
+      {
+        const productsInCart = [...state.productsInCart];
+        const product = productsInCart.find(product => product._id === action.payload);
+        product.amount++;
+        return {
+          ...state,
+          productsInCart: productsInCart
+        }
+      }
+
+    case actionTypes.DECREASE_PRODUCT_AMT:
+      {
+        const productsInCart = [...state.productsInCart];
+        const product = productsInCart.find(product => product._id === action.payload);
+        if(product.amount === 1) {
+          return {
+            ...state,
+            productsInCart: state.productsInCart.filter(product => product._id !== action.payload)
+          }
+        }else{
+          product.amount--;
+          return {
+            ...state,
+            productsInCart: productsInCart
+          }
+        }
+      }
+    case actionTypes.REMOVE_PRODUCT_FROM_CART:
+      return {
+        ...state,
+        productsInCart: state.productsInCart.filter(product => product._id !== action.payload)
+      }
+    
     default:
       return state;
   }
