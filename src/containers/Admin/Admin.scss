@@ -1,9 +1,11 @@
 .admin {
   display: flex;
-  margin-left: 158.5px;
+  margin-left: 43.5px;
   height: 100vh;
-  background: #1a1d21;
+  background: linear-gradient(240deg, #0aa1ff 50%, #63bff9 90%);
   padding: 20px;
+  box-sizing: border-box;
+
   &__categories {
     display: flex;
     height: fit-content;

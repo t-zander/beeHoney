@@ -1,12 +1,18 @@
 .sideBar {
   position: fixed;
-  left: 0;
+  left: -170px;
   top: 0;
   height: 100%;
   background: #fff;
   display: flex;
   flex-direction: column;
   box-shadow: 6px 9px 16px -2px rgba(0, 0, 0, 0.75);
+  transition: left 0.7s;
+  cursor: pointer;
+
+  &:hover{
+    left: 0;
+  }
   &__name {
     padding: 15px;
     background: linear-gradient(to right, #0aa1ff 10%, #6dc7ff 100%);
@@ -20,12 +26,12 @@
     }
   }
   &__navItem {
-    padding: 10px 15px;
+    padding: 10px 65px 0 20px;
     font-weight: 500;
     color: #727272;
     font-size: 18px;
     margin-bottom: 10px;
-    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
     cursor: pointer;
     transition: all 0.3s;
     font-family: "Montserrat", sans-serif;
@@ -36,11 +42,13 @@
       margin-right: 10px;
     }
     &:hover {
-      border-left: 4px solid #0aa1ff;
+      /* border-right: 4px solid #0aa1ff; */
+      color: #0aa1ff;
     }
   }
   .active {
     color: #0aa1ff;
-    border-left: 4px solid #0aa1ff;
+    border-right: 4px solid #0aa1ff;
+    border-bottom: none !important;
   }
 }
