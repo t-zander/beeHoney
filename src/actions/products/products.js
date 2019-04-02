@@ -12,6 +12,8 @@ export const fetchAll = () => {
   };
 };
 
+
+// ПРОДУКТ
 export const fetchById = (productId) => {
   return dispatch => {
     dispatch(fetchStart());
@@ -75,9 +77,9 @@ export const increaseProductAmt = (productId) => {
 }
 
 export const decreaseProductAmt = (productId) => {
-  console.log(productId);
   return {
     type: actionTypes.DECREASE_PRODUCT_AMT,
     payload: productId
   };
 }
+

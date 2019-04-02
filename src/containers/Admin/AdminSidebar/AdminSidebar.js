@@ -17,10 +17,13 @@ const AdminSidebar = () => {
         className="sideBar__navItem"
       >
         <i className="fab fa-forumbee" />
-        Kатегории
+        Товары
       </NavLink>
       <NavLink to="/admin/about" className="sideBar__navItem">
         <i className="fas fa-user-alt" />О нас
+      </NavLink>
+      <NavLink to="/admin/categories" className="sideBar__navItem">
+        <i className="fas fa-folder-open"></i>Категории
       </NavLink>
       <NavLink to="/admin/orders" className="sideBar__navItem">
         <i className="fas fa-money-bill-alt" />
