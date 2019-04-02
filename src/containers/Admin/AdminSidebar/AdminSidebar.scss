@@ -1,24 +1,15 @@
 .sideBar {
   position: fixed;
-<<<<<<< HEAD
-  left: -170px;
-=======
   left: -165px;
->>>>>>> 3f1698a0c08b6f8cc5d7a578c59a87b592747318
   top: 0;
   height: 100%;
   background: #fff;
   display: flex;
   flex-direction: column;
   box-shadow: 6px 9px 16px -2px rgba(0, 0, 0, 0.75);
-<<<<<<< HEAD
-  transition: left 0.7s;
-  cursor: pointer;
-=======
   transition: left 0.5s;
   cursor: pointer;
   z-index: 1000;
->>>>>>> 3f1698a0c08b6f8cc5d7a578c59a87b592747318
 
   &:hover{
     left: 0;
