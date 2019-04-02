@@ -14,12 +14,26 @@ export const fetchAll = () => {
 
 
 // ПРОДУКТ
-export const fetchById = (productId) => {
+export const fetchById = productId => {
   return dispatch => {
     dispatch(fetchStart());
     return axios.get(`${config.serverUrl}products/${productId}`)
       .then(response => {
         dispatch(fetchByIdSuccess(response.data));
+      });
+  };
+}
+
+export const deleteProductById = productId => {
+  return dispatch => {
+    dispatch(deleteProductStart());
+    return axios.delete(`${config.serverUrl}products/${productId}`)
+      .then(() => {
+        dispatch(deleteProductSuccess(productId));
+      })
+      .catch(({response}) => {
+        const {error} = response.data;
+        dispatch(deleteProductFailed(error));
       });
   };
 }
@@ -40,6 +54,26 @@ export const fetchStart = () => {
     type: actionTypes.FETCH_PRODUCTS_START
   };
 };
+
+export const deleteProductStart = () => {
+  return {
+    type: actionTypes.DELETE_PRODUCT_START
+  };
+};
+
+export const deleteProductSuccess =  productId => {
+  return {
+    type: actionTypes.DELETE_PRODUCT_SUCCESS,
+    payload: productId
+  };
+}
+
+export const deleteProductFailed = error => {
+  return {
+    type: actionTypes.DELETE_PRODUCT_FAILED,
+    payload: error
+  };
+}
 
 export const fetchSuccess = data => {
   return {

@@ -1,19 +1,13 @@
 import React, { Component } from "react";
 import { NavLink, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import ProductsContainer from "../../containers/Pages/ProductsContainer/ProductsContainer";
-import ProductsSidebar from "../../containers/Pages/ProductsSidebar/ProductsSidebar";
 import ProductsLayout from "../../components/ProductsLayout/ProductsLayout";
 import * as actions from "../../actions/categories/categories";
 import arrowDown from "../../assets/images/arrow-down.png";
 import "./Shop.scss";
-import * as Scroll from "react-scroll";
 import {
   Link,
-  Element,
-  Events,
   animateScroll as scroll,
-  scrollSpy,
   scroller
 } from "react-scroll";
 
@@ -105,7 +99,7 @@ class Shop extends Component {
               duration={500}
               onSetActive={this.handleSetActive}
             >
-              <img src={arrowDown} />
+              <img src={arrowDown} alt="arrow down"/>
             </Link>
           </div>
         </div>
