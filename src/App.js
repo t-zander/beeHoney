@@ -12,6 +12,7 @@ import AdminSidebar from "./containers/Admin/AdminSidebar/AdminSidebar";
 import AdminAbout from "./containers/Admin/AdminAbout/AdminAbout";
 import Product from "./components/Product/Product";
 import CartList from "./containers/CartList/CartList";
+import AdminCategories from "./containers/Admin/AdminCategories/AdminCategories";
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
         )}
         {/*<Layout>*/}
           <Switch>
+            <Route path="/admin/categories" component={AdminCategories}/>
             <Route path="/admin/login" component={AdminLogin} />
             <Route path="/admin/orders" component={AdminAbout} />
             <Route path="/admin/about" component={AdminAbout} />

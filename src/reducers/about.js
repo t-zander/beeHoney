@@ -11,7 +11,6 @@ const initialState = {
 const aboutReducer = (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.FETCH_ABOUT_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         about: action.payload
