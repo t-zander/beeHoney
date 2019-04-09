@@ -13,6 +13,7 @@ import AdminAbout from "./containers/Admin/AdminAbout/AdminAbout";
 import Product from "./components/Product/Product";
 import CartList from "./containers/CartList/CartList";
 import AdminCategories from "./containers/Admin/AdminCategories/AdminCategories";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 class App extends Component {
   render() {
@@ -25,28 +26,18 @@ class App extends Component {
         )}
         {/*<Layout>*/}
           <Switch>
-            <Route path="/admin/categories" component={AdminCategories}/>
-            <Route path="/admin/login" component={AdminLogin} />
-            <Route path="/admin/orders" component={AdminAbout} />
-            <Route path="/admin/about" component={AdminAbout} />
+            <Route path="/admin/categories" exact component={AdminCategories}/>
+            <Route path="/admin/login" exact component={AdminLogin} />
+            <Route path="/admin/orders" exact component={AdminAbout} />
+            <Route path="/admin/about" exact component={AdminAbout} />
             <Route path="/admin" exact component={Admin} />
             <Route path="/about" component={AboutPage} />
             <Route path="/blog" component={BlogPage} />
             <Route path="/shop/product/:id" component={Product} />
             <Route path="/shop" component={ShopPage} />
-            <Route path="/cart" component={CartList} />
+            <Route path="/cart" exact component={CartList} />
             <Route path="/" exact component={MainPage} />
-            <Route
-              render={() => (
-                <h3
-                  style={{
-                    background: "green"
-                  }}
-                >
-                  OOOOPS 404 error
-                </h3>
-              )}
-            />
+            <Route component={ErrorPage}/>
           </Switch>
         {/*</Layout>*/}
       </React.Fragment>

@@ -37,7 +37,19 @@ const categoriesReducer = (state = initialState, action) => {
         ...state,
         categories: action.payload
       }
-
+    case actionTypes.EDIT_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        categories: state.categories.map(category => category._id === action.payload._id ?
+          {...category,
+          ...action.payload } : category)
+      }
+    case actionTypes.EDIT_CATEGORY_FAIL:
+      return {
+        ...state,
+        categories: state.categories,
+        error: action.paylaod
+      }
     default:
       return state;
   }

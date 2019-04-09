@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Header.scss";
 import CartList from "../../containers/CartList/CartList";
 import logo from "../../assets/images/logo.png";
 import { withRouter } from "react-router";
+import { slide as Menu } from 'react-burger-menu';
 
 class Header extends React.Component {
   state = {
@@ -17,6 +18,11 @@ class Header extends React.Component {
     }
   }
 
+  componentDidUpdate = (prevProps) =>  {
+    if(prevProps !== this.props){
+      window.addEventListener("scroll", this.handleScroll);
+    }
+  }
   navigationItems = [
     {
       path: "/",
@@ -61,25 +67,35 @@ class Header extends React.Component {
   };
 
   render() {
+    let headerStyles;
+    if(this.state.windowYPosition > 0 || this.props.location.pathname.includes("product")){
+      headerStyles = {
+        background: "#404040",
+        position: "fixed",
+        width: "100%",
+        boxSizing: "border-box"
+      }
+    }else if(this.props.location.pathname.includes("cart")){
+        headerStyles = {
+          background: "#404040",
+          position: "fixed",
+          width: "100%",
+          boxSizing: "border-box"
+        }
+    }
     return (
       <header
         className="header"
         style={
-          this.state.windowYPosition > 0 || this.props.location.pathname.includes("product")
-            ? {
-                background: "#404040",
-                position: "fixed",
-                width: "100%",
-                boxSizing: "border-box"
-              }
-            : { background: "transparent" }
+          headerStyles
         }
         >
+        
         <div className="header__wrapper">
           <div className="header__logo">
-            <NavLink to="/" exact>
+            <Link to="/">
               <img src={logo} alt="logo" className="header__logoImg" />
-            </NavLink>
+            </Link>
           </div>
           <nav className="header__navigation">
             {this.navigationItems.map((item, index) => (

@@ -1,0 +1,49 @@
+.blog {
+  background: url(https://images.unsplash.com/photo-1546667240-c328cfa5d032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    content: "";
+  }
+  &__content {
+    z-index: 100;
+    position: absolute;
+    text-align: center;
+    h4 {
+      font-size: 50px;
+      font-weight: bold;
+      color: #ffb400;
+      margin-bottom: 40px;
+    }
+    button {
+      border-radius: 50px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #ffffff;
+    padding: 21px 65px;
+    margin-right: 50px;
+    transition: all 0.5s;
+    background: linear-gradient(to right, #30a06e, #02b521);
+    border: 2px solid transparent;
+    -webkit-box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
+    -moz-box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
+    box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
+    cursor: pointer;
+    &:hover {
+      color: #049e59;
+      border: 2px solid #049e59;
+      background: transparent;
+    }
+    }
+  }
+}

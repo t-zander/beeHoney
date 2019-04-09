@@ -1,6 +1,6 @@
 .header {
   display: block;
-  padding: 10px 30px 10px 15px;
+  padding: 10px 15px 10px 15px;
   justify-content: space-between;
   position: relative;
   z-index: 20;
@@ -47,10 +47,11 @@
     align-items: center;
     cursor: pointer;
     position: relative;
+    text-decoration: none;
+    padding: 10px 20px;
     i {
       transition: all 0.3s;
       z-index: 100;
-      border-bottom: 1px solid transparent;
       &:hover {
         color: #ffb400;
       }
@@ -68,14 +69,13 @@
     align-items: center;
     font-size: 13px;
     font-weight: 500;
-    top: -6px;
-    right: -6px;
+    top: 2px;
+    right: 10px;
   }
 }
 
 .active {
   color: #ffb400;
-  font-weight: 400;
   border-bottom: 1px solid #ffb400;
 }
 
