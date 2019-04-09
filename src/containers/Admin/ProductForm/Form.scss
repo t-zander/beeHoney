@@ -1,5 +1,5 @@
 .form{
-  padding: 0 5px;
+  padding: 5px 15px;
   
   &__field{
     border: none;
@@ -46,13 +46,15 @@
   }
   &__button{
     width: 100%;
-    background: rgba(99, 191, 249, 0.2);
-    cursor: pointer;
     padding: 5px 20px;
     border: none;
     color: #0aa1ff;
     font-size: 18px;
     outline: none;
+
+    &:hover{
+      background:rgba(99, 191, 249, 0.3);
+    }
   }
   &__category{
     font-size: 18px;
@@ -67,4 +69,15 @@
   font-weight: 300;
   font-size: 16px;
   color: red;
+}
+
+.btnEnabled{
+  background: transparent;
+  cursor: pointer;
+  border: 2px solid #0aa1ff;
+}
+
+.btnDisabled{
+  background: rgba(99, 191, 249, 0.2);
+  cursor: pointer;
 }

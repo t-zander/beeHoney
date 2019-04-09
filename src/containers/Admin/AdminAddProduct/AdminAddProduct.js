@@ -44,7 +44,6 @@ class AdminAddProduct extends Component {
   }
 
   render() {
-    console.log(this.state.imgPreviewUrl)
     return (
       <div className="admin__card admin__addProductCard">
         <div className="admin__img admin__uploadImg" onClick={() => this.fileInput.click()}>
