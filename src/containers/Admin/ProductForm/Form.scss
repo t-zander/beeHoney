@@ -23,6 +23,7 @@
 
   &__description{
     font-size: 18px;
+    resize: none;
   }
 
   &__price{
@@ -30,7 +31,7 @@
     color: #0aa1ff;
     font-weight: bold;
     &::placeholder{
-      color: #0aa1ff;
+      color: rgba($color: #0aa1ff, $alpha: 0.7)
     }
   }
   &__priceContainer{
@@ -43,4 +44,27 @@
       padding-left: 10px;
     }
   }
+  &__button{
+    width: 100%;
+    background: rgba(99, 191, 249, 0.2);
+    cursor: pointer;
+    padding: 5px 20px;
+    border: none;
+    color: #0aa1ff;
+    font-size: 18px;
+    outline: none;
+  }
+  &__category{
+    font-size: 18px;
+  }
+  label{
+    color: #0aa1ff;
+    padding: 7px;
+  }
+}
+
+.validationError{
+  font-weight: 300;
+  font-size: 16px;
+  color: red;
 }
