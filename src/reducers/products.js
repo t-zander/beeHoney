@@ -1,4 +1,3 @@
-import {createSelector} from 'reselect';
 import * as actionTypes from '../actions/actionTypes';
 import {addProductsToLS} from '../helpers/helpers';
 
@@ -26,7 +25,8 @@ const initialState = {
       amount: 5
     }
   ],
-  loading: false
+  loading: false,
+  error: null
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -111,6 +111,19 @@ const productsReducer = (state = initialState, action) => {
         productsInCart: state.productsInCart.filter(product => product._id !== action.payload)
       }
     
+    case actionTypes.DELETE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        products: state.products.filter(product => product._id !== action.payload)
+      }
+
+    case actionTypes.DELETE_PRODUCT_FAILED:
+      console.log(action.payload)
+      return {
+        ...state,
+        error: action.payload
+      }
+
     default:
       return state;
   }

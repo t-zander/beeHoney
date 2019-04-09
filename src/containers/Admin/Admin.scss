@@ -1,7 +1,7 @@
 .admin {
   display: flex;
   flex-direction: column;
-  margin-left: 22px;
+  margin-left: 53px;
   min-height: 100vh;
   background: linear-gradient(240deg, #0aa1ff 50%, #63bff9 90%);
   padding: 20px;
@@ -53,6 +53,7 @@
     position: relative;
     margin-right: 10px;
     margin-left: 10px;
+    padding-bottom: 10px;
     &:hover {
       -webkit-transform: translateY(-5px);
       transform: translateY(-5px);
@@ -61,7 +62,39 @@
       box-shadow: 0px 24px 23px -11px rgba(0, 0, 0, 0.48);
     }
   }
-  &__trash {
+
+  &__addProductCard{
+    &:hover{
+      transform: none;
+    }
+  }
+  &__addProductCard:hover &__img::before{
+    opacity: 1;
+    content:" ";
+    position:absolute;
+    background:transparent;
+    bottom:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    opacity:0.7;
+    z-index: 100;
+    border-radius: 5px;
+  }
+  &__iconsContainer{
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    z-index: 100;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  &__trashIcon {
     display: none;
     color: #fff;
     font-size: 22px;
@@ -72,11 +105,17 @@
       color: red;
     }
   }
+
+  &__uploadImgIcon{
+    z-index: 100;
+    cursor: pointer;
+    padding: 0 10px;
+  }
+
   &__img {
     width: 100%;
     height: 200px;
     position: relative;
-    transition: all 2s;
     img {
       width: 100%;
       height: 100%;
@@ -84,6 +123,13 @@
       border-radius: 5px 5px 0 0;
     }
   }
+
+  /* &__uploadImg {
+    &:hover{
+      cursor: pointer;
+    }
+  } */
+
   &__img::before {
     height: 100%;
     z-index: 100;
@@ -109,13 +155,23 @@
     z-index: 100;
     border-radius: 5px;
   }
-  &__card:hover &__trash {
+
+  &__img:hover &__iconsContainer{
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__card:hover &__trashIcon {
     display: block;
     position: absolute;
     top: 10px;
     right: 10px;
-    
   }
+  
   &__cardCont {
     padding: 10px;
     h4 {

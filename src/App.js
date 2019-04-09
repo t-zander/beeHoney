@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Layout from "./containers/Layout/Layout";
 import Header from "./components/Header/Header";
 import { Route, Switch } from "react-router-dom";
 import MainPage from "./containers/MainPage/MainPage";

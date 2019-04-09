@@ -42,7 +42,7 @@ class ProductsLayout extends Component {
                 return (
                   <div key={product._id} className="productsList__product">
                     <div className="productsList__image">
-                      <img src={product.imageUrl} />
+                      <img src={product.imageUrl} alt="product"/>
                     </div>
                     <div className="productsList__content">
                       <NavLink className="productsList__link" to={`/shop/product/${ product._id}`}>
