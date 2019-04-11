@@ -18,8 +18,9 @@ const renderField = ( {input, label, type, className, meta: { touched, error } }
 }
 
 const ProductForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting, categories } = props;
+  const { handleSubmit, pristine, reset, submitting, categories, valid } = props;
   // if selected category is honey show volume 100ml 200ml 300ml
+  console.log(submitting);
   return (
     <form onSubmit={handleSubmit} className="form">
       <div>
@@ -69,7 +70,10 @@ const ProductForm = (props) => {
         />
         <h5> грн.</h5>
       </div>
-      <button type="submit" className="form__button">Сохранить</button>
+      <button type="submit" className={valid ? 'form__button btnEnabled' : 'form__button btnDisabled'}
+        >
+        Сохранить
+      </button>
     </form>
   )
 }
