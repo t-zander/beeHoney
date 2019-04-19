@@ -124,6 +124,12 @@ const productsReducer = (state = initialState, action) => {
         error: action.payload
       }
 
+    case actionTypes.ADD_PRODUCT_ADMIN_SUCCESS:
+      console.log(action.payload)
+      return {
+        ...state,
+        products: [...state.products, action.payload]
+      }
     default:
       return state;
   }

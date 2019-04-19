@@ -3,6 +3,7 @@ import defaultImg from '../../../assets/images/default_img.png';
 import ProductForm from '../ProductForm/ProductForm';
 import { connect } from "react-redux";
 import {fetchAll} from "../../../actions/categories/categories";
+import {addProductAdmin} from "../../../actions/products/products";
 
 class AdminAddProduct extends Component {
   state = {
@@ -11,8 +12,8 @@ class AdminAddProduct extends Component {
   }
 
   handleSubmit = (formValues) => {
-    const dataToSend = {...formValues, ...{productImg: this.state.imgFile}};
-    console.log(dataToSend);
+    const productToSend = {...formValues, ...{product_image: this.state.imgFile}};
+    this.props.onAddProduct(productToSend)
   }
 
   // get categories and pass into form
@@ -58,7 +59,7 @@ class AdminAddProduct extends Component {
           </div>
         </div>
         
-        <ProductForm onSubmit={this.handleSubmit} categories={this.props.categories}/>
+        <ProductForm onSubmit={this.handleSubmit} categories={this.props.categories} imgFile={this.state.imgFile}/>
       </div>
     );
   }
@@ -73,6 +74,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onFetchCategories: () => dispatch(fetchAll()),
+    onAddProduct: (product) => dispatch(addProductAdmin(product)),
   };
 };
 export default connect(

@@ -10,6 +10,9 @@ const validate = values => {
   if (!values.price) {
     errors.price = 'Это обязательное поле!'
   }
+  if (!values.categoryId) {
+    errors.categoryId = 'Это обязательное поле!'
+  }
   return errors
 }
 export {validate};

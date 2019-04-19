@@ -1,64 +1,75 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Form.scss';
 import { Field, reduxForm } from 'redux-form';
 import {validate} from './validationHelper';
+import defaultImg from './../../../assets/images/default_img.png';
 
-const renderField = ( {input, label, type, className, meta: { touched, error } }) => {
+const renderInputField = ( {input, /* label,  */type, className, placeholder, meta: { touched, error } }) => {
   let validationErrorEl = <span className="validationError"><i className="fas fa-exclamation-circle"></i> {error}</span>;
   
   return(
     <div>
-      <label>{label}</label>
-      <div>
-        <input {...input} placeholder={label} type={type} className={className}/>
+     {/*  <label>{label}</label> */}
+      <div className="form__fieldContainer">
+        <input {...input} placeholder={placeholder} type={type} className={className}/>
         {touched && ((error && validationErrorEl))}
       </div>
     </div>
   )
 }
 
-const ProductForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting, categories, valid } = props;
-  // if selected category is honey show volume 100ml 200ml 300ml
-  console.log(submitting);
-  return (
-    <form onSubmit={handleSubmit} className="form">
-      <div>
-        <Field
-          name="name"
-          type="text"
-          placeholder="Название товара"
-          className="form__productName form__field"
-          component={renderField}
-        />
-      </div>
-      <div>
-        <Field
-          name="description"
-          type="textarea"
-          rows="4"
-          placeholder="Описание"
-          className="form__description form__field"
-          component={renderField}
-        />
-      </div>
-      
-      {categories.length ? 
-        <div>
-          {/* <label>Категория:</label>
-          <Field
-              name="categoryId"
-              type="select"
-              className="form__category form__field"
-              component="select"
-            >
-          {categories.map( (category, index) => 
-            <option value={category._id} key={category._id} selected={index === 2}>
+const renderSelectField = ({input, categories, type, className, placeholder, meta: { touched, error } }) => {
+  let validationErrorEl = <span className="validationError"><i className="fas fa-exclamation-circle"></i> {error}</span>;
+  
+  return(
+    <div>
+     {/*  <label>{label}</label> */}
+      <div className="form__fieldContainer">
+        <select {...input} placeholder={placeholder} type={type} className={className}>
+          <option value="">
+            Выбрать категорию
+          </option>
+          {categories.map( (category) => 
+            <option value={category._id} key={category._id}>
               {category.name}
             </option>
           )}
-          </Field> */}
-        </div>
+        </select>
+        {touched && ((error && validationErrorEl))}
+      </div>
+    </div>
+  )
+}
+
+
+const ProductForm = (props) => {
+  const { handleSubmit, pristine, reset, submitting, categories, valid } = props;
+  return (
+    <form onSubmit={handleSubmit} className="form">
+
+      <Field
+        name="name"
+        type="text"
+        placeholder="Название товара"
+        className="form__productName form__field"
+        component={renderInputField}
+      />
+      <Field
+        name="description"
+        type="textarea"
+        rows="4"
+        placeholder="Описание"
+        className="form__description form__field"
+        component={renderInputField}
+      />
+      {categories.length ?
+        <Field
+            name="categoryId"
+            type="select"
+            className="form__category form__field"
+            component={renderSelectField}
+            categories={categories}
+          />
         : null}
       <div className="form__priceContainer">
         <Field
@@ -66,11 +77,14 @@ const ProductForm = (props) => {
           type="number"
           placeholder="Цена"
           className="form__price form__field"
-          component={renderField}
+          component={renderInputField}
         />
         <h5> грн.</h5>
       </div>
-      <button type="submit" className={valid ? 'form__button btnEnabled' : 'form__button btnDisabled'}
+      <button 
+        type="submit" 
+        disabled={!valid || !props.imgFile} 
+        className={!valid || !props.imgFile ? 'form__button btnDisabled' : 'form__button btnEnabled'}
         >
         Сохранить
       </button>
