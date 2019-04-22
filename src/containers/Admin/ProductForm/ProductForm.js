@@ -17,6 +17,7 @@ const renderField = ( {input, label, type, className, meta: { touched, error } }
   )
 }
 
+
 const ProductForm = (props) => {
   const { handleSubmit, pristine, reset, submitting, categories, valid } = props;
   // if selected category is honey show volume 100ml 200ml 300ml
@@ -43,9 +44,9 @@ const ProductForm = (props) => {
         />
       </div>
       
-      {categories.length ? 
+   {/*    {categories.length ? 
         <div>
-          {/* <label>Категория:</label>
+          <label>Категория:</label>
           <Field
               name="categoryId"
               type="select"
@@ -53,13 +54,22 @@ const ProductForm = (props) => {
               component="select"
             >
           {categories.map( (category, index) => 
-            <option value={category._id} key={category._id} selected={index === 2}>
+            <option value={category._id} key={category._id} >
               {category.name}
             </option>
           )}
-          </Field> */}
+          </Field> 
         </div>
-        : null}
+        : null} */}
+        {/* ДОДЕЛАТЬ СЕЛЕКТ БЕЗ РЕДАКС ФОРМ */}
+        <select defaultValue={'123'}>
+          <option>
+            qwe
+          </option>
+          <option>
+            123
+          </option>
+        </select>
       <div className="form__priceContainer">
         <Field
           name="price"

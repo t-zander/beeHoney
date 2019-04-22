@@ -5,7 +5,6 @@ import "./Header.scss";
 import CartList from "../../containers/CartList/CartList";
 import logo from "../../assets/images/logo.png";
 import { withRouter } from "react-router";
-import { slide as Menu } from 'react-burger-menu';
 
 class Header extends React.Component {
   state = {
@@ -23,6 +22,7 @@ class Header extends React.Component {
       window.addEventListener("scroll", this.handleScroll);
     }
   }
+  // MOVE NAVIGATION TO APP.JS AND PASS TO HEADER.JS
   navigationItems = [
     {
       path: "/",
@@ -88,8 +88,7 @@ class Header extends React.Component {
         className="header"
         style={
           headerStyles
-        }
-        >
+        }>       
         
         <div className="header__wrapper">
           <div className="header__logo">

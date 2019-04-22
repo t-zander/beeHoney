@@ -58,7 +58,10 @@ class AdminAddProduct extends Component {
           </div>
         </div>
         
-        <ProductForm onSubmit={this.handleSubmit} categories={this.props.categories}/>
+        <ProductForm 
+          onSubmit={this.handleSubmit} 
+          categories={this.props.categories}
+          initialValues={{categoryId: this.props.categories ? this.props.categories[0] : null}}/>
       </div>
     );
   }
