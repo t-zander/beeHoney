@@ -117,3 +117,29 @@ export const decreaseProductAmt = (productId) => {
   };
 }
 
+export const addProductAdmin = (product) => {
+  const formData = new FormData();
+  for(let key in product) {
+    if(typeof product[key].name === 'string') {
+      formData.append(key, product[key], product[key].name)
+    }else{
+      formData.append(key, product[key])
+    }
+  }
+
+  return dispatch => {
+    dispatch(fetchStart());
+    return axios
+      .post(`${config.serverUrl}products`, formData)
+      .then(response => {
+        dispatch(addProductSuccess(response.data));
+      });
+  };
+}
+
+export const addProductSuccess = (product) => {
+  return {
+    type: actionTypes.ADD_PRODUCT_ADMIN_SUCCESS,
+    payload: product
+  };
+}
