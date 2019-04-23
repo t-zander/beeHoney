@@ -5,38 +5,38 @@ import config from "../../config.json";
 export const fetchAll = () => {
   return dispatch => {
     dispatch(fetchStart());
-    return axios.get(`${config.serverUrl}products`)
-      .then(response => {
-        dispatch(fetchSuccess(response.data));
-      });
+    return axios.get(`${config.serverUrl}products`).then(response => {
+      dispatch(fetchSuccess(response.data));
+    });
   };
 };
-
 
 // ПРОДУКТ
 export const fetchById = productId => {
   return dispatch => {
     dispatch(fetchStart());
-    return axios.get(`${config.serverUrl}products/${productId}`)
+    return axios
+      .get(`${config.serverUrl}products/${productId}`)
       .then(response => {
         dispatch(fetchByIdSuccess(response.data));
       });
   };
-}
+};
 
 export const deleteProductById = productId => {
   return dispatch => {
     dispatch(deleteProductStart());
-    return axios.delete(`${config.serverUrl}products/${productId}`)
+    return axios
+      .delete(`${config.serverUrl}products/${productId}`)
       .then(() => {
         dispatch(deleteProductSuccess(productId));
       })
-      .catch(({response}) => {
-        const {error} = response.data;
+      .catch(({ response }) => {
+        const { error } = response.data;
         dispatch(deleteProductFailed(error));
       });
   };
-}
+};
 
 export const fetchByCategory = categoryId => {
   return dispatch => {
@@ -61,19 +61,19 @@ export const deleteProductStart = () => {
   };
 };
 
-export const deleteProductSuccess =  productId => {
+export const deleteProductSuccess = productId => {
   return {
     type: actionTypes.DELETE_PRODUCT_SUCCESS,
     payload: productId
   };
-}
+};
 
 export const deleteProductFailed = error => {
   return {
     type: actionTypes.DELETE_PRODUCT_FAILED,
     payload: error
   };
-}
+};
 
 export const fetchSuccess = data => {
   return {
@@ -87,7 +87,7 @@ export const fetchByIdSuccess = data => {
     type: actionTypes.FETCH_PRODUCT_BY_ID_SUCCESS,
     payload: data
   };
-}
+};
 
 export const onAddProductToCart = product => {
   return {
@@ -96,34 +96,34 @@ export const onAddProductToCart = product => {
   };
 };
 
-export const removeProductFromCart = (productId) => {
+export const removeProductFromCart = productId => {
   return {
     type: actionTypes.REMOVE_PRODUCT_FROM_CART,
     payload: productId
   };
-}
+};
 
-export const increaseProductAmt = (productId) => {
+export const increaseProductAmt = productId => {
   return {
     type: actionTypes.INCREASE_PRODUCT_AMT,
     payload: productId
   };
-}
+};
 
-export const decreaseProductAmt = (productId) => {
+export const decreaseProductAmt = productId => {
   return {
     type: actionTypes.DECREASE_PRODUCT_AMT,
     payload: productId
   };
-}
+};
 
-export const addProductAdmin = (product) => {
+export const addProductAdmin = product => {
   const formData = new FormData();
-  for(let key in product) {
-    if(typeof product[key].name === 'string') {
-      formData.append(key, product[key], product[key].name)
-    }else{
-      formData.append(key, product[key])
+  for (let key in product) {
+    if (typeof product[key].name === "string") {
+      formData.append(key, product[key], product[key].name);
+    } else {
+      formData.append(key, product[key]);
     }
   }
 
@@ -135,11 +135,11 @@ export const addProductAdmin = (product) => {
         dispatch(addProductSuccess(response.data));
       });
   };
-}
+};
 
-export const addProductSuccess = (product) => {
+export const addProductSuccess = product => {
   return {
     type: actionTypes.ADD_PRODUCT_ADMIN_SUCCESS,
     payload: product
   };
-}
+};

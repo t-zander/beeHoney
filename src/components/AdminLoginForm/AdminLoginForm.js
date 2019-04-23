@@ -1,8 +1,8 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React from "react";
+import { Field, reduxForm } from "redux-form";
 
 const AdminLogin = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, pristine, reset, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -29,9 +29,9 @@ const AdminLogin = props => {
       </div>
       <button>Войти</button>
     </form>
-  )
-}
+  );
+};
 
 export default reduxForm({
-  form: 'adminLoginForm' // a unique identifier for this form
-})(AdminLogin)
+  form: "adminLoginForm" // a unique identifier for this form
+})(AdminLogin);
