@@ -46,8 +46,8 @@ class Header extends React.Component {
     const {productsInCart} = this.props;
     if(productsInCart.length > 0) {
       return productsInCart
-              .map(product => product.amount)
-              .reduce( (current, next) => current + next);
+        .map(product => product.amount)
+        .reduce( (current, next) => current + next);
     }else{
       return 0;
     }
@@ -75,7 +75,7 @@ class Header extends React.Component {
         width: "100%",
         boxSizing: "border-box"
       }
-    }else if(this.props.location.pathname.includes("cart")){
+    }else if(this.props.location.pathname.includes("cart") || this.props.location.pathname.includes("order")){
         headerStyles = {
           background: "#404040",
           position: "fixed",

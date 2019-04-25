@@ -13,8 +13,12 @@ import Product from "./components/Product/Product";
 import CartList from "./containers/CartList/CartList";
 import AdminCategories from "./containers/Admin/AdminCategories/AdminCategories";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Order from "./containers/Order/Order";
+
 import { slide as Menu } from 'react-burger-menu';
 import { NavLink } from 'react-router-dom';
+import OrderCheckout from "./containers/OrderCheckout/OrderCheckout";
+
 
 class App extends Component {
   render() {
@@ -43,7 +47,7 @@ class App extends Component {
             <Route path="/blog" component={BlogPage} />
             <Route path="/shop/product/:id" component={Product} />
             <Route path="/shop" component={ShopPage} />
-            <Route path="/cart" exact component={CartList} />
+            <Route path="/cart" component={OrderCheckout} />
             <Route path="/" exact component={MainPage} />
             <Route component={ErrorPage}/>
           </Switch>

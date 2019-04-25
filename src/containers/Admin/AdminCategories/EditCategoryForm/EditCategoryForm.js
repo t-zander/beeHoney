@@ -39,5 +39,6 @@ class EditCategoryForm extends Component {
 }
 
 export default reduxForm({
-  form: "editCategory"
+  form: "editCategory",
+  enableReinitialize: true
 })(EditCategoryForm);

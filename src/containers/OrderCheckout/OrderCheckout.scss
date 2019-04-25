@@ -1,0 +1,57 @@
+.container{
+  padding: 40px 15px;
+  &__wrapper {
+    margin-top: 82.63px;
+  }
+
+  
+
+  &__btnContainer{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 2px solid #bfbfbf;
+    padding-bottom: 10px;
+  }
+  &__add{
+    margin: 0 10px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #ffffff;
+    padding: 14px 35px;
+    transition: all 0.5s;
+    background: linear-gradient(to right, #30a06e, #02b521);
+    border: 2px solid transparent;
+    -webkit-box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
+    -moz-box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
+    box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
+    cursor: pointer;
+    &:hover{
+      color: #049e59;
+      border: 2px solid #049e59;
+      background: transparent;
+     }
+
+    i{
+      font-size: 25px;
+      color: #05c26c;
+      background: transparent;
+      font-weight: 300;
+
+    }
+    &:hover i {
+      color: #fff;
+    }
+  }
+
+  &__add:disabled:hover{
+    cursor: initial;
+    color: #ffffff;
+    padding: 14px 35px;
+    background: linear-gradient(to right, #30a06e, #02b521);
+  }
+}
+
+
