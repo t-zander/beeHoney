@@ -1,4 +1,5 @@
 import * as actionTypes from "../actionTypes";
+import {CHECKOUT_ORDER} from '../../actionTypes/order';
 import axios from "axios";
 import config from "../../config.json";
 
@@ -11,8 +12,8 @@ export const fetchAll = () => {
   };
 };
 
-// ПРОДУКТ
-export const fetchById = productId => {
+// PRODUCT
+export const fetchById = (productId) => {
   return dispatch => {
     dispatch(fetchStart());
     return axios
@@ -23,7 +24,7 @@ export const fetchById = productId => {
   };
 };
 
-export const deleteProductById = productId => {
+export const deleteProductById = (productId) => {
   return dispatch => {
     dispatch(deleteProductStart());
     return axios
@@ -38,7 +39,7 @@ export const deleteProductById = productId => {
   };
 };
 
-export const fetchByCategory = categoryId => {
+export const fetchByCategory = (categoryId) => {
   return dispatch => {
     dispatch(fetchStart());
     return axios
@@ -61,63 +62,70 @@ export const deleteProductStart = () => {
   };
 };
 
-export const deleteProductSuccess = productId => {
+export const deleteProductSuccess = (productId) => {
   return {
     type: actionTypes.DELETE_PRODUCT_SUCCESS,
     payload: productId
   };
 };
 
-export const deleteProductFailed = error => {
+export const deleteProductFailed = (error) => {
   return {
     type: actionTypes.DELETE_PRODUCT_FAILED,
     payload: error
   };
 };
 
-export const fetchSuccess = data => {
+export const fetchSuccess = (data) => {
   return {
     type: actionTypes.FETCH_PRODUCTS_SUCCESS,
     payload: data
   };
 };
 
-export const fetchByIdSuccess = data => {
+export const fetchByIdSuccess = (data) => {
   return {
     type: actionTypes.FETCH_PRODUCT_BY_ID_SUCCESS,
     payload: data
   };
 };
 
-export const onAddProductToCart = product => {
+export const onAddProductToCart = (product) => {
   return {
     type: actionTypes.ADD_PRODUCT_TO_CART,
     payload: product
   };
 };
 
-export const removeProductFromCart = productId => {
+export const removeProductFromCart = (productId) => {
   return {
     type: actionTypes.REMOVE_PRODUCT_FROM_CART,
     payload: productId
   };
 };
 
-export const increaseProductAmt = productId => {
+export const increaseProductAmt = (productId) => {
   return {
     type: actionTypes.INCREASE_PRODUCT_AMT,
     payload: productId
   };
 };
 
-export const decreaseProductAmt = productId => {
+export const decreaseProductAmt = (productId) => {
   return {
     type: actionTypes.DECREASE_PRODUCT_AMT,
     payload: productId
   };
 };
 
-export const addProductAdmin = product => {
+// ORDER
+export const checkoutOrder = (productsInCart, customerInfo) => {
+  return {
+    type: CHECKOUT_ORDER,
+  };
+};
+
+export const addProductAdmin = (product) => {
   const formData = new FormData();
   for (let key in product) {
     if (typeof product[key].name === "string") {

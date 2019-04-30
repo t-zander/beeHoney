@@ -64,16 +64,15 @@ $gold: #ffb400;
     -o-transition: all 0.5s;
     
     &:hover{
-       border: 2px solid transparent;
-       background: linear-gradient(to right, #30a06e, #02b521);
-     }
+      border: 2px solid transparent;
+      background: linear-gradient(to right, #30a06e, #02b521);
+    }
 
     i{
       font-size: 25px;
       color: #05c26c;
       background: transparent;
       font-weight: 300;
-
     }
     &:hover i {
       color: #fff;

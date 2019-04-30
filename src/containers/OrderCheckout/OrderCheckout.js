@@ -2,54 +2,32 @@ import React,{Component} from 'react';
 import './OrderCheckout.scss';
 import CartList from '../CartList/CartList';
 import Order from '../Order/Order';
+import {Route, NavLink} from 'react-router-dom'
 
 
+const OrderCheckout = (props) => {
+  const {match} = props;
 
-class OrderCheckout extends Component {
-  state = {
-    currentStep: 0
-  }
+  return (
+    <div className="container">
+      <div className="container__wrapper">
+        <NavLink className="container__link" to={ `${match.path}`} exact> 
+          <i className='material-icons cart'>
+            shopping_cart
+          </i>
+          <span>Корзина</span>
+        </NavLink>
 
-  setCurrentStep = (step) => {
-    console.log(step);
-
-    this.setState({
-      currentStep: step
-    })
-  }
-
-  componentsConnector = [
-    <CartList/>,
-    <Order/>
-  ]
-  
-  render() {
-    console.log('rerender') 
-    return (
-      <div className="container">
-        <div className="container__wrapper">
-          <div className='container__btnContainer'>
-            <button 
-              className="container__add" 
-              disabled={this.state.currentStep === 0}
-              onClick={() => this.setCurrentStep(0)}
-              >
-              Корзина
-            </button>
-            <button
-              className="container__add"
-              disabled={this.state.currentStep === 1}
-              onClick={() => this.setCurrentStep(1)}
-              >
-              Оформить Заказ
-            </button>
-          </div>
-
-          {this.componentsConnector[this.state.currentStep]}
-        </div>
+        <NavLink className="container__link" to={ `${match.path}/checkout`}>
+          <i className="far fa-check-circle"></i>
+          <span>Оформить заказ</span>
+        </NavLink>
       </div>
-    );
-  }
+      
+      <Route exact path={match.path} component={CartList}/>
+      <Route path={`${match.path}/checkout`} component={Order}/>
+    </div>
+  );
 }
  
 export default OrderCheckout;
