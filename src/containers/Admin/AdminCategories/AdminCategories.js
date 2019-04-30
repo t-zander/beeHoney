@@ -54,7 +54,7 @@ class AdminCategories extends Component {
                   onClick={() => this.deleteCategoryHandler(category._id)}></i>
                   {category._id === this.state.categoryToEdit 
                   ? <EditCategoryForm 
-                    initialValues={category}
+                    initialValues={{...category}}
                     onSubmit={this.editCategorySumbit}/> : <h1>{category.name}</h1>}
                 </div>
             );

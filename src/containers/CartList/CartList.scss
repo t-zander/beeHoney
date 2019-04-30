@@ -1,9 +1,9 @@
 $gold: #ffc31e;
 
 .cartList{
-  padding: 40px 0;
-  .wrapper {
-    margin-top: 43px;
+  padding: 40px 15px;
+  &__wrapper {
+    padding: 10px;
   }
   &__table{
     width: 100%;
@@ -94,40 +94,11 @@ $gold: #ffc31e;
     margin-bottom: 50px;
     color: #3b3b3a;
   }
-  &__btnContainer {
+  /* &__btnContainer {
     text-align: end;
-  }
-  &__add{
-    border-radius: 50px;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #ffffff;
-    padding: 14px 35px;
-    transition: all 0.5s;
-    background: linear-gradient(to right, #30a06e, #02b521);
-    border: 2px solid transparent;
-    -webkit-box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
-    -moz-box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
-    box-shadow: -1px -1px 29px 5px rgba(55, 245, 89, 0.15);
-    cursor: pointer;
-    &:hover{
-      color: #049e59;
-      border: 2px solid #049e59;
-      background: transparent;
-     }
-
-    i{
-      font-size: 25px;
-      color: #05c26c;
-      background: transparent;
-      font-weight: 300;
-
-    }
-    &:hover i {
-      color: #fff;
-    }
-  }
+    
+  } */
+  
   /* position: fixed;
   top: 73.69px;
   z-index: 4;
