@@ -23,6 +23,9 @@ const renderInputField = field => {
 };
 
 class EditCategoryForm extends Component {
+  componentDidMount() {
+    this.props.initialize(this.props.initialValues);
+  }
   render() {
     const { handleSubmit } = this.props;
     return (

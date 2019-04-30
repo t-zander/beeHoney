@@ -1,86 +1,85 @@
-.form{
+.form {
   padding: 5px 15px;
-  
-  &__fieldContainer{
+
+  &__fieldContainer {
     margin-bottom: 20px;
   }
 
-  &__field{
+  &__field {
     border: none;
-    border-bottom: 2px solid #cccccc; 
+    border-bottom: 2px solid #cccccc;
     width: 100%;
     box-sizing: border-box;
     transition: 0.4s;
     padding: 5px;
-    
 
-    &:focus{
+    &:focus {
       outline: none;
-      border-bottom: 2px solid #0aa1ff;
+      border-bottom: 2px solid #ffb400;
     }
   }
 
-  &__productName{
+  &__productName {
     font-size: 20px;
     font-weight: bold;
   }
 
-  &__description{
+  &__description {
     font-size: 18px;
     resize: none;
   }
 
-  &__price{
+  &__price {
     font-size: 24px;
-    color: #0aa1ff;
+    color: #ffb400;
     font-weight: bold;
-    &::placeholder{
-      color: rgba($color: #0aa1ff, $alpha: 0.7)
+    &::placeholder {
+      color: rgba($color: #ffb400, $alpha: 0.7);
     }
   }
-  &__priceContainer{
+  &__priceContainer {
     display: flex;
     align-items: center;
-    color: #0aa1ff;
+    color: #ffb400;
     font-size: 24px;
     font-weight: bold;
-    h5{
+    h5 {
       padding-left: 10px;
     }
   }
-  &__button{
+  &__button {
     width: 100%;
     padding: 5px 20px;
     border: none;
-    color: #0aa1ff;
+    color: #ffb400;
     font-size: 18px;
     outline: none;
   }
-  &__category{
+  &__category {
     font-size: 18px;
   }
-  label{
-    color: #0aa1ff;
+  label {
+    color: #ffb400;
     padding: 7px;
   }
 }
 
-.validationError{
+.validationError {
   margin-bottom: 10px;
   font-weight: 300;
   font-size: 16px;
   color: red;
 }
 
-.btnEnabled{
+.btnEnabled {
   background: transparent;
   cursor: pointer;
   background: rgba(99, 191, 249, 0.2);
-  &:hover{
-    background:rgba(99, 191, 249, 0.3);
+  &:hover {
+    background: rgba(99, 191, 249, 0.3);
   }
 }
 
-.btnDisabled{
+.btnDisabled {
   background: rgba(213, 220, 232, 0.2);
 }

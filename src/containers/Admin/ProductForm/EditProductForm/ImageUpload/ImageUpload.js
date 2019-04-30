@@ -21,6 +21,13 @@ const ImageUpload = props => {
         }
         alt="картинка товара"
       />
+      <div className="admin__iconsContainer">
+        <i className="admin__uploadImgIcon fas fa-upload" />
+        <i
+          className="admin__uploadImgIcon fas fa-times"
+          onClick={e => props.resetImg(e)}
+        />
+      </div>
     </div>
   );
 };

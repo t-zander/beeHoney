@@ -1,48 +1,53 @@
-import React from "react";
+import React, { Component } from "react";
 import "../../ProductForm/Form.scss";
 import { Field, reduxForm } from "redux-form";
 
-const EditProductForm = props => {
-  const { handleSubmit, submitting, pristine, categories } = props;
-  return (
-    <form onSubmit={handleSubmit} className="form">
-      <Field
-        name="name"
-        type="text"
-        placeholder="Название товара"
-        className="form__productName form__field"
-        component={renderInputField}
-      />
-      <Field
-        name="description"
-        type="textarea"
-        rows="4"
-        placeholder="Описание"
-        className="form__description form__field"
-        component={renderInputField}
-      />
-      {categories.length ? (
+class EditProductForm extends Component {
+  componentDidMount() {
+    this.props.initialize(this.props.initialValues);
+  }
+  render() {
+    const { handleSubmit, submitting, pristine, categories } = this.props;
+    return (
+      <form onSubmit={handleSubmit} className="form">
         <Field
-          name="categoryId"
-          type="select"
-          className="form__category form__field"
-          component={renderSelectField}
-          categories={categories}
-        />
-      ) : null}
-      <div className="form__priceContainer">
-        <Field
-          name="price"
-          type="number"
-          placeholder="Цена"
-          className="form__price form__field"
+          name="name"
+          type="text"
+          placeholder="Название товара"
+          className="form__productName form__field"
           component={renderInputField}
         />
-        <h5> грн.</h5>
-      </div>
-    </form>
-  );
-};
+        <Field
+          name="description"
+          type="textarea"
+          rows="4"
+          placeholder="Описание"
+          className="form__description form__field"
+          component={renderInputField}
+        />
+        {categories.length ? (
+          <Field
+            name="categoryId"
+            type="select"
+            className="form__category form__field"
+            component={renderSelectField}
+            categories={categories}
+          />
+        ) : null}
+        <div className="form__priceContainer">
+          <Field
+            name="price"
+            type="number"
+            placeholder="Цена"
+            className="form__price form__field"
+            component={renderInputField}
+          />
+          <h5> грн.</h5>
+        </div>
+      </form>
+    );
+  }
+}
 
 const renderInputField = ({
   input,

@@ -33,7 +33,10 @@ class Admin extends Component {
   };
 
   editHandler = id => {
-    this.setState({ productToEdit: id });
+    this.setState({
+      selectedImagePreviewUrl: null,
+      productToEdit: id
+    });
   };
 
   changeImageHandler = e => {
@@ -50,6 +53,13 @@ class Admin extends Component {
     if (img) {
       reader.readAsDataURL(img);
     }
+  };
+
+  resetImgHandler = e => {
+    e.stopPropagation();
+    this.setState({
+      selectedImagePreviewUrl: null
+    });
   };
 
   render() {
@@ -75,13 +85,14 @@ class Admin extends Component {
             product._id === this.state.productToEdit ? (
               <div className="admin__card" key={product._id}>
                 <ImageUpload
+                  resetImg={this.resetImgHandler}
                   changeImageHandler={this.changeImageHandler}
                   product={product}
                   reference={this}
                   previewImg={this.state.selectedImagePreviewUrl}
                 />
                 <EditProductForm
-                  initialValues={{ name: "qwe" }}
+                  initialValues={product}
                   categories={this.props.categories}
                 />
               </div>

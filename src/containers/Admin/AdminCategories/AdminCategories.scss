@@ -5,7 +5,7 @@
 }
 .category {
   font-weight: bold;
-  color: #0aa1ff;
+  color: #ffb400;
   background: #fff;
   max-width: 300px;
   padding: 10px;
@@ -38,7 +38,7 @@
   color: #cccccc;
   font-size: 22px;
   &:hover {
-    color: #0aa1ff;
+    color: #ffb400;
   }
 }
 
@@ -78,26 +78,26 @@
   margin-bottom: 15px;
 }
 .adminCategory-input input {
-  color: #0aa1ff;
+  color: #ffb400;
   padding: 15px 10px;
   min-width: 320px;
   border: none;
-  border-bottom: 2px solid #cccccc;  
+  border-bottom: 2px solid #cccccc;
   outline: none;
   font-size: 22px;
   font-weight: bold;
 }
 .adminCategory-input input:focus {
-  border-bottom: 2px solid #0aa1ff ;
+  border-bottom: 2px solid #ffb400;
 }
 .adminCategory-input input::placeholder {
-  color: rgba($color: #0aa1ff, $alpha: .5);
+  color: rgba($color: #ffb400, $alpha: 0.5);
   font-size: 22px;
   font-weight: bold;
 }
 
 .category-add button {
-  background: #0aa1ff;
+  background: #ffb400;
   color: #fff;
   border: none;
   font-size: 34px;
@@ -110,13 +110,12 @@
     transform: translateY(-1px);
     box-shadow: 6px 9px 16px -2px rgba(0, 0, 0, 0.35);
   }
-  
 }
 
 .category-add button:active {
   -webkit-transform: translateY(0);
-    transform: translateY(0);
-    box-shadow: none;
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .editCategory-input {
@@ -124,10 +123,10 @@
 }
 
 .editCategory-input input {
-  color: #0aa1ff;
+  color: #ffb400;
   padding: 15px 10px;
   border: none;
-  border-bottom: 2px solid #cccccc;  
+  border-bottom: 2px solid #cccccc;
   outline: none;
   font-size: 22px;
   font-weight: bold;
@@ -137,7 +136,7 @@
 }
 
 .edit-category-btn {
-  background: #0aa1ff;
+  background: #ffb400;
   color: #fff;
   border: none;
   font-size: 34px;
@@ -150,5 +149,4 @@
     transform: translateY(-1px);
     box-shadow: 6px 9px 16px -2px rgba(0, 0, 0, 0.35);
   }
-
 }
