@@ -10,7 +10,7 @@ import {
   animateScroll as scroll,
   scroller
 } from "react-scroll";
-
+import { browserHistory } from "react-dom";
 
 class Shop extends Component {
   scrollOptions = {
@@ -59,7 +59,8 @@ class Shop extends Component {
   }
 
   render() {
-    const { categories } = this.props;
+    const { categories, match } = this.props;
+
     return (
       <section className="shop under-header">
         <div className="shop__mainContent">
@@ -69,7 +70,7 @@ class Shop extends Component {
                 <NavLink
                   onClick={this.onScrollToProducts}
                   exact
-                  to='/shop'
+                  to={`${match.url}`}
                   activeClassName="shop__active"
                   >
                   Все продукты
@@ -79,7 +80,7 @@ class Shop extends Component {
                     <NavLink
                       exact
                       key={category._id}
-                      to={`/shop/${category._id}`}
+                      to={`${match.url}/${category._id}`}
                       onClick={this.onScrollToProducts}
                       activeClassName="shop__active"
                     >
@@ -92,7 +93,7 @@ class Shop extends Component {
           <div className="shop__arrow">
             <Link
               activeClass="active"
-              to="products"
+              to="/products"
               spy={true}
               smooth={true}
               offset={50}
@@ -104,21 +105,11 @@ class Shop extends Component {
           </div>
         </div>
         <div id="products" className="products">
-          {/* <NavLink>Все товары</NavLink> */}
-
-          {/* <NavLink>Ульи</NavLink>
-        <NavLink>Другое</NavLink> */}
-
+          
           <Route
-            path="/shop/:categoryId?"
-            component={ProductsLayout}
+            path={`${match.path}/:categoryId?`}
+            render={(props) => <ProductsLayout {...props} categoriesIds={categories} />}
           />
-          {/*  <div className="shop__products">
-          <ProductsContainer />
-        </div>
-        <div className="shop__sidebar">
-          <ProductsSidebar />
-        </div> */}
           <div 
             className={(!this.state.isScrollVisible ? 'products__topArrow hidden' : 'products__topArrow')}
             onClick={() => scroll.scrollToTop(this.scrollOptions)}

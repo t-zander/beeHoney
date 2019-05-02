@@ -12,7 +12,7 @@ class Order extends Component {
     console.log('productsInCart', productsInCart, customerInfo)
   }
 
-  render() { 
+  render() {
     const {productsInCart, customerInfo} = this.props;
     return (
       <div className="orderWrapper">

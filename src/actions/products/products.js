@@ -13,13 +13,16 @@ export const fetchAll = () => {
 };
 
 // PRODUCT
-export const fetchById = (productId) => {
+export const fetchById = (productId, history) => {
   return dispatch => {
     dispatch(fetchStart());
     return axios
       .get(`${config.serverUrl}products/${productId}`)
       .then(response => {
         dispatch(fetchByIdSuccess(response.data));
+      })
+      .catch((err) => {
+        history.push('/not-found')
       });
   };
 };
@@ -39,13 +42,17 @@ export const deleteProductById = (productId) => {
   };
 };
 
-export const fetchByCategory = (categoryId) => {
+export const fetchByCategory = (categoryId, history) => {
+
   return dispatch => {
     dispatch(fetchStart());
     return axios
       .get(`${config.serverUrl}products/category/${categoryId}`)
       .then(response => {
         dispatch(fetchSuccess(response.data));
+      })
+      .catch(err => {
+        history.push('/not-found')
       });
   };
 };

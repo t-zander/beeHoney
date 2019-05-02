@@ -14,8 +14,7 @@ class Product extends Component {
 
   componentDidMount() {
     const {id} = this.props.match.params;
-    this.props.onGetProductById(id);
-    
+    this.props.onGetProductById(id, this.props.history);
   }
 
   onSelectPortion = (index) => {
@@ -103,7 +102,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetProductById: productId => dispatch(actions.fetchById(productId)),
+    onGetProductById: (productId, history) => dispatch(actions.fetchById(productId, history)),
     onAddToCart: (product) => dispatch(actions.onAddProductToCart(product))
   };
 };

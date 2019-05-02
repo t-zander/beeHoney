@@ -7,6 +7,10 @@ import { NavLink } from "react-router-dom";
 class ProductsLayout extends Component {
   
   componentDidMount() {
+    /* if(this.props.categoriesIds.find(category => category._id == this.props.match.params.categoryId)) {
+      console.log('yes')
+    } */
+    
     this.getProducts();
   }
 
@@ -16,10 +20,12 @@ class ProductsLayout extends Component {
     }
   }
 
+
+
   getProducts = () => {
     const {categoryId} = this.props.match.params;
     if(categoryId) {
-      this.props.onGetProductsByCategory(categoryId);
+      this.props.onGetProductsByCategory(categoryId, this.props.history);
     }else{
       this.props.onGetAllProducts()
     }
@@ -30,6 +36,7 @@ class ProductsLayout extends Component {
   }
 
   render() {
+    
     const {products} = this.props;
     if(products.length === 0) {
       return <h3>В этой категории пока нет продуктов...</h3>
@@ -74,7 +81,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetProductsByCategory: categoryId => dispatch(actions.fetchByCategory(categoryId)),
+    onGetProductsByCategory: (categoryId, history) => dispatch(actions.fetchByCategory(categoryId, history)),
     onGetAllProducts: () => dispatch(actions.fetchAll()),
     onAddToCart: (product) => dispatch(actions.onAddProductToCart(product))
   };
