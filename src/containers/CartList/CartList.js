@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from '../../actions/products/products';
+import * as actions from "../../actions/products/products";
 import "./CartList.scss";
 
 class CartList extends Component {
@@ -10,32 +10,32 @@ class CartList extends Component {
     portions: [250, 500]
   };
 
-  onSelectPortion = (index) => {
+  onSelectPortion = index => {
     this.setState({
       selectedPortion: index
-    })
+    });
   };
-  
+
   getTotalPrice = () => {
-    if(this.props.productsInCart.length) {
+    if (this.props.productsInCart.length) {
       return this.props.productsInCart
         .map(product => product.price * product.amount)
-        .reduce( (current, next) => current + next)
-    }else{
+        .reduce((current, next) => current + next);
+    } else {
       return 0;
     }
   };
 
-  removeFromCart = (productId) => {
+  removeFromCart = productId => {
     this.props.onRemoveFromCart(productId);
-  }
+  };
 
   /* changeProductAmount = (a, b) => {
     console.log(a, b);
   } */
 
   render() {
-    const{productsInCart} = this.props;
+    const { productsInCart } = this.props;
     return (
       <div className="cartList__wrapper">
         <h2>Корзина</h2>
@@ -47,7 +47,7 @@ class CartList extends Component {
               <th>Объем</th>
               <th>Количество</th>
               <th>Цена</th>
-              <th></th>
+              <th />
             </tr>
           </thead>
           <tbody>
@@ -56,47 +56,60 @@ class CartList extends Component {
                 <tr key={product._id} className="cartList__tableRow">
                   <td>
                     <div className="cartList__imageContainer">
-                      <img src={product.imageUrl} alt="product"/>
+                      <img src={product.imageUrl} alt="product" />
                     </div>
                   </td>
                   <td>{product.description}</td>
                   <td>
                     <div className="cartList__portionContainer">
-                      {this.state.portions.map( (portion, index) =>
-                        (<p
+                      {this.state.portions.map((portion, index) => (
+                        <p
                           onClick={() => this.onSelectPortion(index)}
-                          className={'cartList__portion ' + (this.state.selectedPortion === index ? 'selectedPortion' : '')}
-                          key={index}>
+                          className={
+                            "cartList__portion " +
+                            (this.state.selectedPortion === index
+                              ? "selectedPortion"
+                              : "")
+                          }
+                          key={index}
+                        >
                           {portion} мл
-                        </p>)
-                      )}
+                        </p>
+                      ))}
                     </div>
                   </td>
                   <td>
                     <div className="cartList__amount">
-                      <i 
-                        className="material-icons cartList__controls" 
-                        onClick={() => this.props.onDecreaseProductAmt(product._id)}>
+                      <i
+                        className="material-icons cartList__controls"
+                        onClick={() =>
+                          this.props.onDecreaseProductAmt(product._id)
+                        }
+                      >
                         keyboard_arrow_left
                       </i>
                       <p>{product.amount}</p>
-                      <i 
+                      <i
                         className="material-icons cartList__controls"
-                        onClick={() => this.props.onIncreaseProductAmt(product._id)}>
+                        onClick={() =>
+                          this.props.onIncreaseProductAmt(product._id)
+                        }
+                      >
                         keyboard_arrow_right
                       </i>
                     </div>
                   </td>
                   <td>{product.price} грн</td>
                   <td>
-                    <i 
-                      className="material-icons cartList__controls" 
-                      onClick={() => this.props.onRemoveFromCart(product._id)}>
+                    <i
+                      className="material-icons cartList__controls"
+                      onClick={() => this.props.onRemoveFromCart(product._id)}
+                    >
                       close
                     </i>
                   </td>
                 </tr>
-              )
+              );
             })}
           </tbody>
         </table>
@@ -113,7 +126,7 @@ class CartList extends Component {
                 <p>50 грн</p>
               </div>
             </div>
-            
+
             <div className="cartList__totalPrice">
               <h2>Итого: {this.getTotalPrice() + 50} грн</h2>
             </div>
@@ -124,12 +137,15 @@ class CartList extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    onIncreaseProductAmt: (productId) => dispatch(actions.increaseProductAmt(productId)),
-    onDecreaseProductAmt: (productId) => dispatch(actions.decreaseProductAmt(productId)),
-    onRemoveFromCart: (productId) => dispatch(actions.removeProductFromCart(productId))
-  }
+    onIncreaseProductAmt: productId =>
+      dispatch(actions.increaseProductAmt(productId)),
+    onDecreaseProductAmt: productId =>
+      dispatch(actions.decreaseProductAmt(productId)),
+    onRemoveFromCart: productId =>
+      dispatch(actions.removeProductFromCart(productId))
+  };
 };
 
 const mapStateToProps = state => {
@@ -138,4 +154,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartList);

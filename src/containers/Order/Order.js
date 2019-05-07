@@ -1,19 +1,21 @@
-import React,{Component} from 'react';
-import './Order.scss';
+import React, { Component } from "react";
+import "./Order.scss";
 import { connect } from "react-redux";
-import * as actions from '../../actions/products/products';
-import OrderProduct from '../../components/OrderProduct/OrderProduct';
-import OrderForm from '../../components/OrderForm/OrderForm';
-import { getFormValues } from 'redux-form'
+import * as actions from "../../actions/products/products";
+import OrderProduct from "../../components/OrderProduct/OrderProduct";
+import OrderForm from "../../components/OrderForm/OrderForm";
+import { getFormValues } from "redux-form";
 
 class Order extends Component {
-
   checkoutOrderHandler = (productsInCart, customerInfo) => {
-    console.log('productsInCart', productsInCart, customerInfo)
-  }
+    console.log("productsInCart", productsInCart, customerInfo);
+  };
+  backHandler = () => {
+    this.props.history.goBack();
+  };
 
-  render() { 
-    const {productsInCart, customerInfo} = this.props;
+  render() {
+    const { productsInCart, customerInfo } = this.props;
     return (
       <div className="orderWrapper">
         <div className="orderWrapper__wrapper">
@@ -21,42 +23,49 @@ class Order extends Component {
 
           <div className="main">
             <div className="main__leftPanel">
-              <OrderForm/>
+              <OrderForm />
             </div>
             <div className="main__rightPanel">
               <h4>В корзине:</h4>
-              {productsInCart.map(product => 
-                <OrderProduct key={product._id} product={product}/>
-              )}
+              {productsInCart.map(product => (
+                <OrderProduct key={product._id} product={product} />
+              ))}
               <div className="main__summary">
                 <h3>К оплате:</h3>
-                <button 
-                  type="button" className="main__btnPrimary" 
-                  onClick={() => this.checkoutOrderHandler(productsInCart, customerInfo)}
-                  >
+                <button
+                  type="button"
+                  className="main__btnPrimary"
+                  onClick={() =>
+                    this.checkoutOrderHandler(productsInCart, customerInfo)
+                  }
+                >
                   Заказать
                 </button>
               </div>
             </div>
           </div>
+          <button onClick={this.backHandler} />
         </div>
       </div>
     );
   }
 }
- 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    checkoutOrderHandler: (productsInCart, customerInfo) => dispatch(actions.checkoutOrder(productsInCart, customerInfo))
-  }
-};
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = dispatch => {
   return {
-    productsInCart: state.productsReducer.productsInCart,
-    customerInfo: getFormValues('orderForm')(state) // all values of OrderForm
+    checkoutOrderHandler: (productsInCart, customerInfo) =>
+      dispatch(actions.checkoutOrder(productsInCart, customerInfo))
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    productsInCart: state.productsReducer.productsInCart,
+    customerInfo: getFormValues("orderForm")(state) // all values of OrderForm
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Order);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Order);

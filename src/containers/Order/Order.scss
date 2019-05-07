@@ -1,56 +1,58 @@
-.orderWrapper{
+.orderWrapper {
   max-width: 80%;
   margin: 0 auto;
   &__wrapper {
     padding: 10px;
   }
 
-  &__title{
+  &__title {
     color: #ffb400;
     font-size: 36px;
   }
 }
 
-.main{
+.main {
   display: flex;
-  &__leftPanel{
+  &__leftPanel {
     width: 50%;
     padding: 40px;
     border-right: 1px solid #bfbfbf;
   }
-  
-  &__rightPanel{
+
+  &__rightPanel {
     width: 50%;
     padding: 40px;
-    h4{
+    h4 {
       font-size: 28px;
     }
   }
 
-  &__orderProduct{
+  &__orderProduct {
     display: flex;
     border-bottom: 1px solid #bfbfbf;
     padding: 20px 10px;
     align-items: center;
   }
 
-  &__imageContainer{
-    height: 150px;
-    width: 120px;
-    img{
+  &__imageContainer {
+    height: 80px;
+    width: 80px;
+    margin-right: 10px;
+    img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
-  &__summary{
-    h3{
+  &__summary {
+    h3 {
       font-size: 32px;
     }
     padding-top: 34px;
   }
 
-  &__btnPrimary{
+  &__btnPrimary {
     box-sizing: border-box;
     float: right;
     margin-top: 96px;
@@ -68,8 +70,8 @@
     -moz-transition: all 0.5s;
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
-    
-    &:hover{
+
+    &:hover {
       border: 2px solid transparent;
       background: linear-gradient(to right, #30a06e, #02b521);
       color: #fff;

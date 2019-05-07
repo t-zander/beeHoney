@@ -1,26 +1,27 @@
 $gold: #ffc31e;
 
-.cartList{
+.cartList {
   padding: 40px 15px;
   &__wrapper {
     padding: 10px;
+    padding-top: 85px;
   }
-  &__table{
+  &__table {
     width: 100%;
     margin-bottom: 25px;
   }
-  &__tableHeaderRow{
+  &__tableHeaderRow {
     text-transform: uppercase;
-    th{
+    th {
       text-align: left;
       padding: 25px 0;
       color: #767674;
     }
     border-bottom: 1px solid #bfbfbf;
   }
-  &__tableRow{
+  &__tableRow {
     border-bottom: 1px solid #bfbfbf;
-    td{
+    td {
       text-transform: uppercase;
       vertical-align: middle;
       padding: 10px 0;
@@ -28,69 +29,70 @@ $gold: #ffc31e;
       color: #3b3b3a;
     }
   }
-  &__imageContainer{
+  &__imageContainer {
     width: 140px;
     height: 180px;
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 5px;
     }
   }
-  &__top,&__bottom{
+  &__top,
+  &__bottom {
     display: flex;
     justify-content: space-between;
   }
   &__top {
     margin-bottom: 10px;
   }
-  &__portionContainer{
+  &__portionContainer {
     display: flex;
   }
-  &__portion{
+  &__portion {
     padding: 0 10px;
     font-size: 20px;
     transition: color 0.4s;
     border-bottom: 1px solid transparent;
-    &:hover{
+    &:hover {
       color: $gold;
       cursor: pointer;
     }
   }
-  &__amount{
+  &__amount {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
   }
-  &__controls{
+  &__controls {
     font-size: 30px;
     margin: 0 5px;
     transition: color 0.4s;
-    user-select:none;
-    &:hover{
+    user-select: none;
+    &:hover {
       cursor: pointer;
       color: #049e59;
     }
   }
-  &__priceControls{
+  &__priceControls {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
   }
   &__priceControlsContainer {
     max-width: 280px;
     width: 100%;
   }
 
-  &__price{
+  &__price {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10px;
     color: #3b3b3a;
   }
-  &__totalPrice{
+  &__totalPrice {
     margin-bottom: 50px;
     color: #3b3b3a;
   }
@@ -98,7 +100,7 @@ $gold: #ffc31e;
     text-align: end;
     
   } */
-  
+
   /* position: fixed;
   top: 73.69px;
   z-index: 4;

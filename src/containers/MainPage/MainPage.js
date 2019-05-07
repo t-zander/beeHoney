@@ -2,6 +2,7 @@ import React from "react";
 import "./mainPage.scss";
 import beeMovie from "../../assets/videos/beeMovie.mp4";
 import { Link } from "react-router-dom";
+import Button from "../../components/UI/Button/Button";
 
 const MainPage = props => {
   return (
@@ -17,17 +18,17 @@ const MainPage = props => {
           </p>
 
           <div className="mainPage__btnGroup">
-            <button
+            <Button
               className="mainPage__btn"
-              onClick={() => {
+              click={() => {
                 props.history.push("/shop");
               }}
             >
               Заказать
-            </button>
+            </Button>
 
             <Link to="/about" className="mainPage__aboutLink">
-            <i className="fas fa-question add"></i>
+              <i className="fas fa-question add" />
               <span className="details">Подробнее о продуктах</span>
             </Link>
           </div>
